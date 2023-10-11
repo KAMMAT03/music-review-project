@@ -6,24 +6,49 @@ export default function Login(props){
 
     const [credentials, setCredentials] = React.useState({
         username: "",
-        password: ""
+        password: "",
+        confpassword: ""
     })
 
     function toggleRegistered(){
         setRegistered(prev => !prev);
     }
 
-    function submit(event){
+    function submitRegister(event){
         event.preventDefault();
         fetch("http://localhost:8080/api/auth/register", {
             method: "POST",
-            // mode: "no-cors",
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify(credentials)
-        }).then((response) => response.json())
-        .then((json) => console.log(json));
+            body: JSON.stringify({
+                username: credentials.username,
+                password: credentials.password
+            })
+        }).then((response) => {
+            console.log(response.status);
+            return response.json();
+        })
+        .then(json => console.log(json));
+    }
+
+    function submitLogin(event){
+        event.preventDefault();
+
+        fetch("http://localhost:8080/api/auth/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                username: credentials.username,
+                password: credentials.password
+            })
+        }).then((response) => {
+            console.log(response.status);
+            return response.json();
+        })
+        .then(json => console.log(json));
     }
 
     function handleChange(event){
@@ -38,7 +63,7 @@ export default function Login(props){
 
     return (
         <div className="login">
-            <h1>{registered ? 'Register' : 'Login'}</h1>
+            <h1>{registered ? 'Login' : 'Register'}</h1>
             <form className="login-form" action="">
                 <input
                     className='login-input'
@@ -56,14 +81,23 @@ export default function Login(props){
                     placeholder="password"
                     onChange={handleChange}
                 />
-                <button onClick={submit} className='login-button'>Login</button>
+                {!registered &&
+                <input
+                    className='login-input'
+                    name='confpassword'
+                    value={credentials.confpassword}
+                    type="password"
+                    placeholder="confirm password"
+                    onChange={handleChange}
+                />}
+                <button onClick={registered ? submitLogin : submitRegister} className='login-button'>Login</button>
             </form>
             <div className='login-toggle'>
                 <span>
-                    {registered ? 'Already registered?' : 'Don\'t have an account yet?'}
+                    {registered ? 'Don\'t have an account yet?' : 'Already registered?'}
                 </span>
                 <button onClick={toggleRegistered} className='register-button'>
-                    {registered ? 'Login' : 'Register'}
+                    {registered ? 'Register' : 'Login'}
                 </button>
             </div>
         </div>

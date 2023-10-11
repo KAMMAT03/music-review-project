@@ -7,10 +7,10 @@
     justify-content: end;
     align-items: center;
     padding: 30px 60px;
-    gap: 20px;
+    gap: 5px;
     border-radius: 25px;
     width: 360px;
-    height: 320px;
+    height: 360px;
 }
 
 .login-form{
