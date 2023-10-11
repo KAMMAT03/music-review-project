@@ -1,4 +1,5 @@
 import React from "react";
+import Album from "./Album";
 import '../styles/main.css'
 
 export default function Main(props){
@@ -11,6 +12,12 @@ export default function Main(props){
                 </form>
                 <button className="myreviews-button" >My Reviews</button>
             </nav>
+            <ul className="main-albums">
+                <Album />
+                <Album />
+                <Album />
+                <Album />
+            </ul>
         </main>
     )
 }

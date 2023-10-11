@@ -1,5 +1,6 @@
 body{
-    height: 100vh;
+    margin-top: 110px;
+    padding: 20px;
 }
   
 .container{
@@ -54,3 +55,25 @@ body{
     padding: 5px 10px;
     cursor: pointer;
 }
+
+.album{
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    padding: 20px;
+    background-color: bisque;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    
+}
+
+.album-cover{
+    width: 100px;
+    border-radius: 10px;
+}
+
+.album-name{
+    font-size: 24px;
+    font-weight: 700;
+}
+
+
