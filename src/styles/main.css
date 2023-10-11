@@ -1,13 +1,14 @@
 body{
     margin-top: 110px;
     padding: 20px;
+    background-color: rgb(26, 26, 26);
 }
   
 .container{
 }
 
 .main-nav{
-    background-color: aquamarine;
+    background-color: rgb(40, 223, 247);
     display: flex;
     justify-content: space-between;
     height: 40px;
@@ -27,53 +28,84 @@ body{
 
 .main-form input{
     min-width: 250px;
-    padding: 5px;
-    padding-left: 15px;
+    padding: 14px;
+    padding-left: 25px;
     font-size: 20px;
     border: none;
-    border-radius: 15px;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-}
-
-.main-form button{
-    padding: 5px 10px;
-    padding-right: 15px;
-    font-size: 20px;
-    border: none;
-    border-radius: 15px;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-    cursor: pointer;
+    border-radius: 45px;
+    background-color: rgb(26, 26, 26);
+    color: whitesmoke;
 }
 
 .myreviews-button{
     font-size: 20px;
     text-wrap: nowrap;
     border: none;
-    border-radius: 15px;
-    padding: 5px 10px;
+    border-radius: 9px;
+    padding: 14px 20px;
     cursor: pointer;
+    background-color: rgb(26, 26, 26);
+    color: whitesmoke;
 }
 
 .album{
     display: grid;
-    grid-template-columns: 120px 1fr;
-    padding: 20px;
-    background-color: bisque;
-    border-radius: 20px;
+    grid-template-columns: 80px 1fr;
+    padding: 15px;
+    background-color: rgb(40, 223, 247);
+    border-radius: 15px;
     margin-bottom: 20px;
-    
+    max-width: 800px;
+}
+
+.album p {
+    color: whitesmoke;
 }
 
 .album-cover{
-    width: 100px;
+    width: 60px;
     border-radius: 10px;
+}
+
+.album-info{
+    overflow: hidden;
+    color: whitesmoke;
 }
 
 .album-name{
     font-size: 24px;
     font-weight: 700;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    text-wrap:nowrap;
+}
+
+.album-artists p{
+    display: inline;
+    padding-inline: 10px;
+    color: whitesmoke;
+}
+
+.album-artists{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    text-wrap:nowrap;
+    color: whitesmoke;
+}
+
+.main-albums{
+    width: fit-content;
+    margin-inline: auto;
+    padding-inline: 100px;
+}
+
+.main{
+    display: flex;
+}
+
+.page-next{
+    width: 50px;
+    height: 50px;
 }
 
 

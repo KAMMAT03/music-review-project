@@ -1,16 +1,27 @@
 import React from "react";
 
-export default function Album(){
+export default function Album(props){
+    const artistElements = !props.albumArtists ? [] : props.albumArtists.map((artist, index) => (
+        <p
+            style={{borderLeft: index ? 'solid' : 'none', borderWidth: '2px'}}
+            key={artist.id}
+            className="artist-element"
+            >{artist.name}
+        </p>
+    ))
+
     return (
         <div className="album">
             <img
                 className="album-cover"
-                src="https://i.scdn.co/image/ab67616d0000b273881d8d8378cd01099babcd44"
+                src={props?.albumCover}
                 alt=""
             />
             <div className="album-info" >
-                <p className="album-name" >UTOPIA</p>
-                <p className="album-artist" >Travis Scott</p>
+                <p className="album-name" >{props?.albumName}</p>
+                <div className="album-artists" >
+                    {artistElements}
+                </div>
             </div>
         </div>
     )
