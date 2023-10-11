@@ -1,0 +1,56 @@
+body{
+    height: 100vh;
+}
+  
+.container{
+}
+
+.main-nav{
+    background-color: aquamarine;
+    display: flex;
+    justify-content: space-between;
+    height: 40px;
+    z-index: 10;
+    position: fixed;
+    right: 0;
+    left: 0;
+    top: 0;
+    align-items: center;
+    padding: 30px;
+    gap: 40px;
+}
+
+.main-form{
+    
+}
+
+.main-form input{
+    min-width: 250px;
+    padding: 5px;
+    padding-left: 15px;
+    font-size: 20px;
+    border: none;
+    border-radius: 15px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.main-form button{
+    padding: 5px 10px;
+    padding-right: 15px;
+    font-size: 20px;
+    border: none;
+    border-radius: 15px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    cursor: pointer;
+}
+
+.myreviews-button{
+    font-size: 20px;
+    text-wrap: nowrap;
+    border: none;
+    border-radius: 15px;
+    padding: 5px 10px;
+    cursor: pointer;
+}

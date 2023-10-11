@@ -1,4 +1,14 @@
-
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+}
+  
+.container{
+    display: flex;
+    justify-content: center;
+}
 
 .login{
     background-color:rgb(0, 91, 133);
