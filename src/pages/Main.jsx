@@ -13,13 +13,21 @@ export default function Main(props){
         setSearchContent(event.target.value);
     }
 
+    function changePage(event){
+        event.target.name === 'back' ? setPageNo(prev => prev - 1) : setPageNo(prev => prev + 1);
+    }
+
+    React.useEffect(() => {
+        window.scrollTo(0, 0)
+      }, [searchContent, pageNo])
+
     React.useEffect(() => {
         if (searchContent.length < 3) return;
 
         fetch(`http://localhost:8080/api/albums/search?content=${searchContent.replace(/\s/g,'')}&pageNo=${pageNo}`)
         .then(response => response.json())
         .then(json => setAlbums(json.content));
-    }, [searchContent])
+    }, [searchContent, pageNo])
 
     const albumElements = albums && albums.map(album => (
         <Album
@@ -34,6 +42,9 @@ export default function Main(props){
     return (
         <main>
             <nav className="main-nav">
+                <div className="home-container">
+                    <img className="home-icon" src="home-icon.svg" alt="" />
+                </div>
                 <form className="main-form" action="">
                     <input
                         value={searchContent}
@@ -44,11 +55,16 @@ export default function Main(props){
                 </form>
                 <button className="myreviews-button" >My Reviews</button>
             </nav>
-            <button className="page-back" ></button>
             <ul className="main-albums">
                 {albumElements}
             </ul>
-            <button className="page-next" ></button>
+            {albums.length > 0 && <div className="page-switches">
+                {pageNo > 1 && 
+                    <button onClick={changePage} name="back" className="page-back" >⇦</button>}
+                {pageNo}
+                {pageNo < 5 && 
+                    <button onClick={changePage} name="next" className="page-next" >⇨</button>}
+            </div>}
         </main>
     )
 }

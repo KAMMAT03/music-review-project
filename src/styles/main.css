@@ -3,31 +3,28 @@ body{
     padding: 20px;
     background-color: rgb(26, 26, 26);
 }
-  
-.container{
+
+*{
+    box-sizing: border-box;
 }
+
 
 .main-nav{
     background-color: rgb(40, 223, 247);
     display: flex;
-    justify-content: space-between;
-    height: 40px;
     z-index: 10;
     position: fixed;
     right: 0;
     left: 0;
     top: 0;
     align-items: center;
+    justify-content: center;
     padding: 30px;
-    gap: 40px;
 }
 
-.main-form{
-    
-}
 
 .main-form input{
-    min-width: 250px;
+    flex-shrink: 1;
     padding: 14px;
     padding-left: 25px;
     font-size: 20px;
@@ -37,10 +34,30 @@ body{
     color: whitesmoke;
 }
 
+.home-icon{
+    width: 40px;
+    filter: invert(100%) sepia(0%) saturate(185%) hue-rotate(82deg) brightness(114%) contrast(92%);
+}
+
+.home-container:hover{
+    background-color: rgb(26, 26, 26);
+    width: 53px;
+    height: 53px;
+    display: flex;
+    justify-content: center;
+    border-radius: 9px;
+}
+
+.home-container{
+    flex: 1;
+}
+
 .myreviews-button{
+    flex: 1;
     font-size: 20px;
     text-wrap: nowrap;
     border: none;
+    width: fit-content;
     border-radius: 9px;
     padding: 14px 20px;
     cursor: pointer;
@@ -99,13 +116,39 @@ body{
     padding-inline: 100px;
 }
 
-.main{
-    display: flex;
+.page-next, .page-back{
+    width: 50px;
+    height: 50px;
+    background-color: rgb(40, 223, 247);
+    border: none;
+    border-radius: 20%;
+    color: whitesmoke;
+    font-weight: 800;
+    font-size: 30px;
+    position: absolute;
+    cursor: pointer;
+}
+
+.page-back{
+    right: 35px;
 }
 
 .page-next{
-    width: 50px;
-    height: 50px;
+    left: 35px;
 }
 
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.page-switches{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    color: rgb(40, 223, 247);
+    font-size: 30px;
+    position: relative;
+}
 
