@@ -6,6 +6,7 @@ body{
 
 *{
     box-sizing: border-box;
+    margin: 0;
 }
 
 
@@ -18,15 +19,26 @@ body{
     left: 0;
     top: 0;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     padding: 30px;
+}
+
+.main-form{
+    display: flex;
+    flex: 1;
+    min-width: 0px;
+    margin-inline: 20px;
 }
 
 
 .main-form input{
-    flex-shrink: 1;
+    flex: 1;
     padding: 14px;
+    overflow: hidden;
+    text-wrap: nowrap;
+    text-overflow: ellipsis;
     padding-left: 25px;
+    max-width: 1000px;
     font-size: 20px;
     border: none;
     border-radius: 45px;
@@ -39,21 +51,20 @@ body{
     filter: invert(100%) sepia(0%) saturate(185%) hue-rotate(82deg) brightness(114%) contrast(92%);
 }
 
-.home-container:hover{
-    background-color: rgb(26, 26, 26);
+.home-container{
     width: 53px;
     height: 53px;
     display: flex;
     justify-content: center;
+    flex-shrink: 1;
+}
+
+.home-container:hover{
+    background-color: rgb(26, 26, 26);
     border-radius: 9px;
 }
 
-.home-container{
-    flex: 1;
-}
-
 .myreviews-button{
-    flex: 1;
     font-size: 20px;
     text-wrap: nowrap;
     border: none;
@@ -113,7 +124,7 @@ body{
 .main-albums{
     width: fit-content;
     margin-inline: auto;
-    padding-inline: 100px;
+    padding-inline: 50px;
 }
 
 .page-next, .page-back{
@@ -152,3 +163,17 @@ main{
     position: relative;
 }
 
+.main-title h1, h2{
+    text-align: center;
+    margin-bottom: 10px;
+    color: rgb(73, 73, 73);
+}
+
+.main-title h1{
+    font-size: 40px;
+}
+
+.main-title{
+    position: fixed;
+    top: 40%;
+}

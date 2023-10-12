@@ -55,6 +55,13 @@ export default function Main(props){
                 </form>
                 <button className="myreviews-button" >My Reviews</button>
             </nav>
+            {
+                albums.length === 0 &&
+                <div className="main-title">
+                    <h1>Music Review APP</h1>
+                    <h2>THE place to share your music opinions!</h2>
+                </div>
+            }
             <ul className="main-albums">
                 {albumElements}
             </ul>
