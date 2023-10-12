@@ -1,7 +1,8 @@
 import React from 'react';
 import './App.css'
 // import Login from './pages/Login'
-import Main from './pages/Main';
+// import Main from './pages/Main';
+import AlbumPage from './pages/AlbumPage';
 
 
 export default function App(){
@@ -14,7 +15,8 @@ export default function App(){
   return (
     <div className='container'>
       {/* <Login saveToken={saveToken} /> */}
-      <Main token={token} />
+      {/* <Main token={token} /> */}
+      <AlbumPage token={token} />
     </div>
   )
 }
