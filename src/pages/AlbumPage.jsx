@@ -6,10 +6,17 @@ import Review from "./Review";
 export default function AlbumPage(){
     const [album, setAlbum] = React.useState({});
 
+    const [reviews, setReviews] = React.useState([]);
+
     React.useEffect(() => {
-        fetch(`http://localhost:8080/api/albums/3u20OXh03DjCUzbf8XcGTq`)
+        fetch(`http://localhost:8080/api/albums/3znl1qe13kyjQv7KcR685N`)
         .then(response => response.json())
         .then(json => setAlbum(json));
+
+        fetch(`http://localhost:8080/api/albums/3znl1qe13kyjQv7KcR685N/reviews`)
+        .then(response => response.json())
+        .then(json => console.log(json.content));
+
     }, [])
 
     const artistElements = !album.artists ? [] : album.artists.map((artist, index) => (
@@ -24,6 +31,12 @@ export default function AlbumPage(){
             >{artist.name}
         </p>
     ))
+
+    const reviewElements = !(reviews.length > 0) ? [] : reviews.map(reviewObj => {
+        return (
+            <Review key={reviewObj.id} reviewProps={reviewObj} />
+        )
+    })
 
     return (
         <div className="albumpage-main">
@@ -45,7 +58,7 @@ export default function AlbumPage(){
             </div>
             <div className="albumpage-reviews">
                 <button className="albumpage-review-button">Add Review</button>
-                <Review />
+                {reviewElements}
             </div>
         </div>
     )

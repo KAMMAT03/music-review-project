@@ -55,17 +55,22 @@ body{
 
 .track-grid{
     display: grid;
-    grid-template-columns: 30px 1fr;
+    grid-template-columns: 40px 1fr;
     align-items: center;
+    color: whitesmoke;
+    padding-block: 5px;
+    border-radius: 10px;
+    background-color: rgb(26, 26, 26);
 }
 
 .track-index{
     font-size: 20px;
+    text-align: center;
     font-weight: 700;
 }
 
 .albumpage-tracklist{
-    overflow: scroll;
+    overflow-y: scroll;
 }
 
 .review{
@@ -74,7 +79,6 @@ body{
     background-color: rgb(40, 223, 247);
     padding: 30px;
     border-radius: 15px;
-    position: relative;
 }
 
 .albumpage-reviews{
@@ -82,6 +86,7 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 20px;
 }
 
 .albumpage-review-button{
@@ -110,10 +115,53 @@ body{
 }
 
 .review-score{
-    position: absolute;
     background-color: rgb(26, 26, 26);
     color: whitesmoke;
-    right: 32px;
-    font-size: 35px;
-    top: 36px;
+    height: 60px;
+    width: 60px;
+    display: flex;
+    border-radius: 10px;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    font-size: 40px;
+}
+
+.review-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+::-webkit-scrollbar {
+    width: 16px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgb(40, 223, 247);
+    border-radius: 5px;
+    border: 4px solid rgba(0, 0, 0, 0);
+    background-clip: padding-box;
+    border-radius: 9999px;
+}
+  
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(21, 117, 130);
+    border: 4px solid rgba(0, 0, 0, 0);
+    background-clip: padding-box;
+    border-radius: 9999px;
+}
+
+.albumpage-info ::-webkit-scrollbar-thumb:hover {
+    background: rgb(66, 66, 66);
+    border: 4px solid rgba(0, 0, 0, 0);
+    background-clip: padding-box;
+    border-radius: 9999px;
+}
+
+.albumpage-info ::-webkit-scrollbar-thumb {
+    background: rgb(26, 26, 26);
+    border-radius: 5px;
+    border: 4px solid rgba(0, 0, 0, 0);
+    background-clip: padding-box;
+    border-radius: 9999px;
 }

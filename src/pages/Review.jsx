@@ -1,12 +1,18 @@
 import React from "react";
 
-export default function Review(){
+export default function Review({reviewProps}){
     return (
         <div className="review">
-            <h1 className="review-title">Review Title</h1>
-            <h3 className="review-user">By: anthony fantano</h3>
-            <p className="review-content">This album wasd adrgadr dafgadf dfg dfgsdf sdfsdfsdfsd sdfsdfasdf asdfasdf asdfasdfsdfvdf hdfhdfghndfgh fgbdfgbrstf stbsfb</p>
-            <div className="review-score">9</div>
+            <div  className="review-header">
+                <div className="review-info">
+                    <h1 className="review-title">{reviewProps.title}</h1>
+                    <h3 className="review-user">By: {reviewProps.username}</h3>
+                </div>
+                <div className="review-score">
+                    <span>{reviewProps.score}</span>
+                </div>
+            </div>
+            <p className="review-content">{reviewProps.content}</p>
         </div>
     )
 }

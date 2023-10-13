@@ -8,7 +8,7 @@ export default function Tracks(props){
             <div className="track-grid">
                 <span className="track-index">{index + 1}</span>
                 <div className="track-info">
-                    <h3>{track.name}</h3>
+                    <h4>{track.name}</h4>
                     <div className="track-artists">
                         {artistElements}
                     </div>
@@ -21,6 +21,7 @@ export default function Tracks(props){
         return track.artists.map((artist, index) => (
             <p
                 style={{
+                        fontSize: '14px',
                         borderLeft: index ? 'solid' : 'none',
                         borderWidth: '2px',
                         paddingLeft: index ? '10px' : '0px',
