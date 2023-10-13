@@ -1,0 +1,42 @@
+.albumpage-info{
+    background-color: rgb(40, 223, 247);
+    color: rgb(26, 26, 26);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    gap: 10px;
+}
+
+.albumpage-cover{
+    width: 290px;
+    height: 290px;
+    border-radius: 15px;
+}
+
+.albumpage-artists{
+    font-size: 20px;
+    font-weight: 500;
+    margin-block: -5px;
+}
+
+.albumpage-name{
+    font-size: 30px;
+    font-weight: 800;
+}
+
+.albumpage-date{
+    margin-bottom: 10px;
+}
+
+.tracks-list li{
+    margin-bottom: 4px;
+}
+
+.tracks{
+    width: 200px;
+}
