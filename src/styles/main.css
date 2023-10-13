@@ -36,7 +36,7 @@
 
 .home-icon{
     width: 40px;
-    filter: invert(100%) sepia(0%) saturate(185%) hue-rotate(82deg) brightness(114%) contrast(92%);
+    filter: invert(0%) sepia(10%) saturate(6064%) hue-rotate(70deg) brightness(102%) contrast(80%);
 }
 
 .home-container{
@@ -50,6 +50,10 @@
 .home-container:hover{
     background-color: rgb(26, 26, 26);
     border-radius: 9px;
+}
+
+.home-container:hover .home-icon{
+    filter: invert(100%) sepia(0%) saturate(185%) hue-rotate(82deg) brightness(114%) contrast(92%);
 }
 
 .myreviews-button{
@@ -81,6 +85,7 @@
 .album-cover{
     width: 60px;
     border-radius: 10px;
+    cursor: pointer;
 }
 
 .album-info{
@@ -94,12 +99,17 @@
     text-overflow: ellipsis;
     overflow: hidden;
     text-wrap:nowrap;
+    cursor: pointer;
+    background-color: transparent;
+    color: rgb(26, 26, 26);
+    border: none;
 }
 
 .album-artists p{
     display: inline;
     padding-inline: 10px;
-    color: whitesmoke;
+    color: rgb(26, 26, 26);
+    font-weight: 600;
 }
 
 .album-artists{

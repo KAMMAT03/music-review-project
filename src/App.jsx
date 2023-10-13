@@ -18,7 +18,7 @@ export default function App(){
       <Routes>
         <Route path="/auth" element={<Login />} />
         <Route path="/search" element={<Main />} />
-        <Route path="/album" element={<AlbumPage />} />
+        <Route path="/album/:id" element={<AlbumPage />} />
       </Routes>
     </div>
   )

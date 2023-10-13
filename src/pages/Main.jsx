@@ -1,9 +1,14 @@
 import React from "react";
 import Album from "./Album";
 import '../styles/main.css'
+import { useNavigate } from "react-router-dom";
 
 export default function Main(props){
     const [searchContent, setSearchContent] = React.useState("");
+
+    const navigate = useNavigate();
+
+    const [albumId, setAlbumId] = React.useState("");
 
     const [pageNo, setPageNo] = React.useState(1);
     
@@ -15,6 +20,15 @@ export default function Main(props){
 
     function changePage(event){
         event.target.name === 'back' ? setPageNo(prev => prev - 1) : setPageNo(prev => prev + 1);
+    }
+
+    React.useEffect(() => {
+        console.log(albumId);
+        albumId && navigate(`/album/${albumId}`);
+    }, [albumId])
+
+    function goToAlbum(event){
+        setAlbumId(event.target.name);
     }
 
     React.useEffect(() => {
@@ -31,6 +45,7 @@ export default function Main(props){
 
     const albumElements = albums && albums.map(album => (
         <Album
+            func={goToAlbum}
             key={album.id}
             albumName={album.name}
             albumArtists={album.artists}

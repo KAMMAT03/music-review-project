@@ -2,18 +2,21 @@ import React from "react";
 import Tracks from "./Tracks";
 import '../styles/albumpage.css';
 import Review from "./Review";
+import { useParams } from "react-router-dom";
 
 export default function AlbumPage(){
+    const { id } = useParams();
+
     const [album, setAlbum] = React.useState({});
 
     const [reviews, setReviews] = React.useState([]);
 
     React.useEffect(() => {
-        fetch(`http://localhost:8080/api/albums/6idVoBWP2mt1qoMtASm3gc`)
+        fetch(`http://localhost:8080/api/albums/${id}`)
         .then(response => response.json())
         .then(json => setAlbum(json));
 
-        fetch(`http://localhost:8080/api/albums/6idVoBWP2mt1qoMtASm3gc/reviews`)
+        fetch(`http://localhost:8080/api/albums/${id}/reviews`)
         .then(response => response.json())
         .then(json => setReviews(json.content));
 

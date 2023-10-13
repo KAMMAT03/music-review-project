@@ -1,8 +1,13 @@
 import React from 'react'
 import '../styles/login.css'
+import { useNavigate } from 'react-router-dom';
 
 export default function Login(props){
     const [registered, setRegistered] = React.useState(false);
+
+    const [message, setMessage] = React.useState("");
+
+    const navigate = useNavigate();
 
     const [credentials, setCredentials] = React.useState({
         username: "",
@@ -16,7 +21,13 @@ export default function Login(props){
 
     function submitRegister(event){
         event.preventDefault();
-        fetch("http://localhost:8080/api/auth/register", {
+
+        if (credentials.password !== credentials.confpassword){
+            setMessage("Passwords do not match!");
+            return;
+        }
+
+        const response = fetch("http://localhost:8080/api/auth/register", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -26,10 +37,20 @@ export default function Login(props){
                 password: credentials.password
             })
         }).then((response) => {
-            console.log(response.status);
-            return response.json();
+            return response;
         })
-        .then(json => console.log(json));
+
+        if (response.status === 200){
+            console.log(response)
+            // response.json().then(json => {
+            //     navigate("/search");
+            // })
+        } else {
+            // response.json().then(json =>{
+            //     setMessage(json.message);
+            // })
+            console.log("cos nie tak");
+        }
     }
 
     function submitLogin(event){
@@ -65,6 +86,7 @@ export default function Login(props){
         <div className='login-div'>
             <div className="login">
                 <h1>{registered ? 'Login' : 'Register'}</h1>
+                <p style={{color: 'red'}}>{message}</p>
                 <form className="login-form" action="">
                     <input
                         className='login-input'
