@@ -1,15 +1,3 @@
-body{
-    margin-top: 110px;
-    padding: 20px;
-    background-color: rgb(26, 26, 26);
-}
-
-*{
-    box-sizing: border-box;
-    margin: 0;
-}
-
-
 .main-nav{
     background-color: rgb(40, 223, 247);
     display: flex;
@@ -148,10 +136,12 @@ body{
     left: 35px;
 }
 
-main{
+.main{
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 110px;
+    padding: 20px;
 }
 
 .page-switches{

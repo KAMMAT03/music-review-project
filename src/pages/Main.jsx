@@ -40,7 +40,7 @@ export default function Main(props){
     ))
 
     return (
-        <main>
+        <main className="main">
             <nav className="main-nav">
                 <div className="home-container">
                     <img className="home-icon" src="home-icon.svg" alt="" />
