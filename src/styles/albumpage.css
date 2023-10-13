@@ -1,10 +1,6 @@
 body{
     margin-left: 350px;
-    padding: 50px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    padding: 20px 50px;
 }
 
 .albumpage-info{
@@ -70,4 +66,54 @@ body{
 
 .albumpage-tracklist{
     overflow: scroll;
+}
+
+.review{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(40, 223, 247);
+    padding: 30px;
+    border-radius: 15px;
+    position: relative;
+}
+
+.albumpage-reviews{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.albumpage-review-button{
+    font-size: 20px;
+    margin-bottom: 20px;
+    width: 150px;
+    padding-block: 10px;
+    background-color: rgb(40, 223, 247);
+    border: none;
+    border-radius: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.review-user{
+    font-weight: 500;
+    font-size: 15px;
+}
+
+.review-content{
+    margin-top: 20px;
+    padding: 10px;
+    background-color: rgb(26, 26, 26);
+    color: whitesmoke;
+    border-radius: 15px;
+}
+
+.review-score{
+    position: absolute;
+    background-color: rgb(26, 26, 26);
+    color: whitesmoke;
+    right: 32px;
+    font-size: 35px;
+    top: 36px;
 }

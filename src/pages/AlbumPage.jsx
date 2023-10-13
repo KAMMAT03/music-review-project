@@ -1,6 +1,7 @@
 import React from "react";
 import Tracks from "./Tracks";
 import '../styles/albumpage.css';
+import Review from "./Review";
 
 export default function AlbumPage(){
     const [album, setAlbum] = React.useState({});
@@ -43,7 +44,8 @@ export default function AlbumPage(){
                 </div>
             </div>
             <div className="albumpage-reviews">
-                <button>Add Review</button>
+                <button className="albumpage-review-button">Add Review</button>
+                <Review />
             </div>
         </div>
     )
