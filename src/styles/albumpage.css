@@ -1,3 +1,12 @@
+body{
+    margin-left: 350px;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .albumpage-info{
     background-color: rgb(40, 223, 247);
     color: rgb(26, 26, 26);
@@ -25,7 +34,7 @@
 }
 
 .albumpage-name{
-    font-size: 30px;
+    font-size: 28px;
     font-weight: 800;
 }
 
@@ -38,5 +47,27 @@
 }
 
 .tracks{
-    width: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.artist-element{
+    display: inline;
+    padding-inline: 10px;
+}
+
+.track-grid{
+    display: grid;
+    grid-template-columns: 30px 1fr;
+    align-items: center;
+}
+
+.track-index{
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.albumpage-tracklist{
+    overflow: scroll;
 }

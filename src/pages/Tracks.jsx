@@ -1,26 +1,40 @@
 import React from "react";
 
 export default function Tracks(props){
+    const trackList = props?.tracklist && props.tracklist.map((track, index) => {
+        const artistElements = getArtists(track);
+        
+        return (
+            <div className="track-grid">
+                <span className="track-index">{index + 1}</span>
+                <div className="track-info">
+                    <h3>{track.name}</h3>
+                    <div className="track-artists">
+                        {artistElements}
+                    </div>
+                </div>
+            </div>
+        )
+    })
+
+    function getArtists(track){
+        return track.artists.map((artist, index) => (
+            <p
+                style={{
+                        borderLeft: index ? 'solid' : 'none',
+                        borderWidth: '2px',
+                        paddingLeft: index ? '10px' : '0px',
+                        paddingRight: index === track.artists.length - 1 ? '0px' : '10px'}}
+                key={artist.id}
+                className="artist-element"
+                >{artist.name}
+            </p>
+        ))
+    }
+
     return (
         <div className="tracks">
-            <ol className="tracks-list">
-                <li>
-                    <h3>HYENA</h3>
-                    <p>Travis Scott</p>
-                </li>
-                <li>
-                    <h3>HYENA</h3>
-                    <p>Travis Scott</p>
-                </li>
-                <li>
-                    <h3>HYENA</h3>
-                    <p>Travis Scott</p>
-                </li>
-                <li>
-                    <h3>HYENA</h3>
-                    <p>Travis Scott</p>
-                </li>
-            </ol>
+            {trackList}
         </div>
     )
 }
