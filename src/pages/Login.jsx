@@ -62,43 +62,45 @@ export default function Login(props){
 
 
     return (
-        <div className="login">
-            <h1>{registered ? 'Login' : 'Register'}</h1>
-            <form className="login-form" action="">
-                <input
-                    className='login-input'
-                    name='username'
-                    value={credentials.username}
-                    type="text"
-                    placeholder="username"
-                    onChange={handleChange}
-                />
-                <input
-                    className='login-input'
-                    name='password'
-                    value={credentials.password}
-                    type="password"
-                    placeholder="password"
-                    onChange={handleChange}
-                />
-                {!registered &&
-                <input
-                    className='login-input'
-                    name='confpassword'
-                    value={credentials.confpassword}
-                    type="password"
-                    placeholder="confirm password"
-                    onChange={handleChange}
-                />}
-                <button onClick={registered ? submitLogin : submitRegister} className='login-button'>Login</button>
-            </form>
-            <div className='login-toggle'>
-                <span>
-                    {registered ? 'Don\'t have an account yet?' : 'Already registered?'}
-                </span>
-                <button onClick={toggleRegistered} className='register-button'>
-                    {registered ? 'Register' : 'Login'}
-                </button>
+        <div className='login-div'>
+            <div className="login">
+                <h1>{registered ? 'Login' : 'Register'}</h1>
+                <form className="login-form" action="">
+                    <input
+                        className='login-input'
+                        name='username'
+                        value={credentials.username}
+                        type="text"
+                        placeholder="username"
+                        onChange={handleChange}
+                    />
+                    <input
+                        className='login-input'
+                        name='password'
+                        value={credentials.password}
+                        type="password"
+                        placeholder="password"
+                        onChange={handleChange}
+                    />
+                    {!registered &&
+                    <input
+                        className='login-input'
+                        name='confpassword'
+                        value={credentials.confpassword}
+                        type="password"
+                        placeholder="confirm password"
+                        onChange={handleChange}
+                    />}
+                    <button onClick={registered ? submitLogin : submitRegister} className='login-button'>{registered ? 'Login' : 'Register'}</button>
+                </form>
+                <div className='login-toggle'>
+                    <span>
+                        {registered ? 'Don\'t have an account yet?' : 'Already registered?'}
+                    </span>
+                    <button onClick={toggleRegistered} className='register-button'>
+                        {registered ? 'Register' : 'Login'}
+                    </button>
+                </div>
             </div>
         </div>
     )

@@ -9,13 +9,13 @@ export default function AlbumPage(){
     const [reviews, setReviews] = React.useState([]);
 
     React.useEffect(() => {
-        fetch(`http://localhost:8080/api/albums/3znl1qe13kyjQv7KcR685N`)
+        fetch(`http://localhost:8080/api/albums/6idVoBWP2mt1qoMtASm3gc`)
         .then(response => response.json())
         .then(json => setAlbum(json));
 
-        fetch(`http://localhost:8080/api/albums/3znl1qe13kyjQv7KcR685N/reviews`)
+        fetch(`http://localhost:8080/api/albums/6idVoBWP2mt1qoMtASm3gc/reviews`)
         .then(response => response.json())
-        .then(json => console.log(json.content));
+        .then(json => setReviews(json.content));
 
     }, [])
 
