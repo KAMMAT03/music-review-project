@@ -16,6 +16,12 @@ export default function Login(props){
     })
 
     function toggleRegistered(){
+        setCredentials({
+            username: "",
+            password: "",
+            confpassword: ""
+        });
+        setMessage("");
         setRegistered(prev => !prev);
     }
 
@@ -27,7 +33,7 @@ export default function Login(props){
             return;
         }
 
-        const response = fetch("http://localhost:8080/api/auth/register", {
+        fetch("http://localhost:8080/api/auth/register", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -36,21 +42,20 @@ export default function Login(props){
                 username: credentials.username,
                 password: credentials.password
             })
-        }).then((response) => {
-            return response;
-        })
-
-        if (response.status === 200){
-            console.log(response)
-            // response.json().then(json => {
-            //     navigate("/search");
-            // })
-        } else {
-            // response.json().then(json =>{
-            //     setMessage(json.message);
-            // })
-            console.log("cos nie tak");
-        }
+        }).then((response) => response.json())
+        .then(json => {
+            console.log(json);
+            if (json.code === '200'){
+                navigate("/search");
+            } else {
+                setMessage(json.message);
+                setCredentials(prev => ({
+                    ...prev,
+                    password: "",
+                    confpassword: ""
+                }));
+            }
+        });
     }
 
     function submitLogin(event){
@@ -65,11 +70,14 @@ export default function Login(props){
                 username: credentials.username,
                 password: credentials.password
             })
-        }).then((response) => {
-            console.log(response.status);
-            return response.json();
-        })
-        .then(json => console.log(json));
+        }).then(response => response.json())
+        .then(json => {
+            if (json.accessToken !== undefined){
+                navigate("/search");
+            } else{
+                setMessage("Wrong username or password!")
+            }
+        });
     }
 
     function handleChange(event){
