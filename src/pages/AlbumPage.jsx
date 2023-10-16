@@ -36,9 +36,7 @@ export default function AlbumPage(){
         setCreateView(false);
     }
 
-    function addReview(event, reviewObj){
-        // event.preventDefault();
-
+    function addReview(reviewObj){
         fetch("http://localhost:8080/api/reviews/create", {
             method: "POST",
             headers: {
