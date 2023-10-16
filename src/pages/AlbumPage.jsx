@@ -21,7 +21,10 @@ export default function AlbumPage(){
 
         fetch(`http://localhost:8080/api/albums/${id}/reviews`)
         .then(response => response.json())
-        .then(json => setReviews(json.content));
+        .then(json => setReviews
+            (json.content.sort((a, b) => 
+                Date.parse(b.dateOfPublication) - Date.parse(a.dateOfPublication)
+            )));
 
     }, [])
 
@@ -34,7 +37,7 @@ export default function AlbumPage(){
     }
 
     function addReview(event, reviewObj){
-        event.preventDefault();
+        // event.preventDefault();
 
         fetch("http://localhost:8080/api/reviews/create", {
             method: "POST",
@@ -47,8 +50,6 @@ export default function AlbumPage(){
                 albumId: id
             })
         }).then((response) => console.log(response));
-
-        // location.reload();
     }
 
     const artistElements = !album.artists ? [] : album.artists.map((artist, index) => (
