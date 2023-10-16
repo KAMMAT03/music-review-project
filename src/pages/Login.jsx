@@ -75,7 +75,7 @@ export default function Login(props){
             if (json.accessToken !== undefined){
                 navigate("/search");
             } else{
-                setMessage("Wrong username or password!")
+                setMessage("Wrong username or password!");
             }
         });
     }

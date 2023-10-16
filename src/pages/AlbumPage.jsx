@@ -3,9 +3,12 @@ import Tracks from "./Tracks";
 import '../styles/albumpage.css';
 import Review from "./Review";
 import { useParams } from "react-router-dom";
+import CreateReview from "./CreateReview";
 
 export default function AlbumPage(){
     const { id } = useParams();
+
+    const [createView, setCreateView] = React.useState(false);
 
     const [album, setAlbum] = React.useState({});
 
@@ -21,6 +24,32 @@ export default function AlbumPage(){
         .then(json => setReviews(json.content));
 
     }, [])
+
+    function enableCreateView(){
+        setCreateView(true);
+    }
+
+    function disableCreateView(){
+        setCreateView(false);
+    }
+
+    function addReview(event, reviewObj){
+        event.preventDefault();
+
+        fetch("http://localhost:8080/api/reviews/create", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0MTMiLCJpYXQiOjE2OTc0OTAwNzUsImV4cCI6MTY5NzQ5MzY3NX0.IqEKibwAxCBQ7w4kSToLP-iHSiECEGsJReIGyhpm2cd1T4Tb3wp4_RNw9gTZIEmgAnLFp6OQ15oJZ76_atFOnw`
+            },
+            body: JSON.stringify({
+                ...reviewObj,
+                albumId: id
+            })
+        }).then((response) => console.log(response));
+
+        // location.reload();
+    }
 
     const artistElements = !album.artists ? [] : album.artists.map((artist, index) => (
         <p
@@ -59,10 +88,14 @@ export default function AlbumPage(){
                     <Tracks tracklist={album.trackList} />
                 </div>
             </div>
-            <div className="albumpage-reviews">
-                <button className="albumpage-review-button">Add Review</button>
+            {!createView ?  <div className="albumpage-reviews">
+                <button onClick={enableCreateView} className="albumpage-review-button">Add Review</button>
                 {reviewElements}
+            </div> : 
+            <div className="createreview">
+                <CreateReview funcReview={addReview} funcView={disableCreateView} />
             </div>
+            }
         </div>
     )
 }
