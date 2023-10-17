@@ -92,8 +92,8 @@
     align-self: center;
     font-size: 20px;
     margin-bottom: 20px;
-    width: 150px;
-    padding-block: 10px;
+    /* width: 150px; */
+    padding: 10px 20px;
     background-color: rgb(40, 223, 247);
     border: none;
     border-radius: 15px;

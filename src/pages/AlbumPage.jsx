@@ -1,12 +1,16 @@
 import React from "react";
 import '../styles/albumpage.css';
 import Review from "./Review";
-import { useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import CreateReview from "./CreateReview";
 import Sidebar from "./Sidebar";
 
 export default function AlbumPage(){
     const { id } = useParams();
+
+    const location = useLocation();
+
+    const navigate = useNavigate();
 
     const [createView, setCreateView] = React.useState(false);
 
@@ -36,12 +40,16 @@ export default function AlbumPage(){
         setCreateView(false);
     }
 
+    function goToLogin(){
+        navigate('/auth');
+    }
+
     function addReview(reviewObj){
         fetch("http://localhost:8080/api/reviews/create", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": `Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0MTMiLCJpYXQiOjE2OTc1NTQxMDEsImV4cCI6MTY5NzU1NzcwMX0.hN4Ml5tSluBSDy0bZKrgiH5glftdSlJIiw2I5dvNgPah9NKqX-As2YCWB3gpctUkunqfsK9_q6P7w9MNbAXwVQ`
+                "Authorization": `Bearer ${location.state.token}`
             },
             body: JSON.stringify({
                 ...reviewObj,
@@ -64,7 +72,9 @@ export default function AlbumPage(){
                 albumArtists={album.artists}
             />
             {!createView ?  <div className="albumpage-reviews">
-                <button onClick={enableCreateView} className="albumpage-review-button">Add Review</button>
+                <button onClick={location.state !== null ? enableCreateView : goToLogin} className="albumpage-review-button">
+                    {location.state !== null ? "Add Review" : "Sign in to add your review"}
+                </button>
                 {reviewElements}
             </div> : 
             <div className="createreview">

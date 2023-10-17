@@ -26,7 +26,7 @@ export default function Main(props){
     }
 
     React.useEffect(() => {
-        albumId && navigate(`/album/${albumId}`);
+        albumId && navigate(`/album/${albumId}`, { state: location.state });
     }, [albumId])
 
     function goToAlbum(event){
@@ -37,8 +37,16 @@ export default function Main(props){
         navigate('/auth');
     }
 
+    function logOut(){
+        navigate('/search');
+    }
+
     function goToUserReviews(){
-        navigate(`/reviews/${location.state.username}`);
+        navigate(`/reviews/${location.state.username}`, { state: location.state });
+    }
+
+    function goToMain(){
+        window.location.reload();
     }
 
     React.useEffect(() => {
@@ -77,6 +85,8 @@ export default function Main(props){
                 authorized={location.state !== null}
                 goToLogin={goToLogin}
                 goToUserReviews={goToUserReviews}
+                goToMain={goToMain}
+                logOut={logOut}
             />
             {
                 albums.length === 0 &&

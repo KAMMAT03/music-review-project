@@ -80,6 +80,10 @@ export default function Login(props){
         });
     }
 
+    function goToMain(){
+        navigate('/search');
+    }
+
     function handleChange(event){
         const {name, value} = event.target;
 
@@ -94,6 +98,7 @@ export default function Login(props){
         <div className='login-div'>
             <div className="login">
                 <h1>{registered ? 'Login' : 'Register'}</h1>
+                <p className='login-info' >For access to all functionalities!</p>
                 <p style={{color: 'red'}}>{message}</p>
                 <form className="login-form" action="">
                     <input
@@ -131,6 +136,7 @@ export default function Login(props){
                         {registered ? 'Register' : 'Login'}
                     </button>
                 </div>
+                <button onClick={goToMain} className='login-continue'>Continue without an account</button>
             </div>
         </div>
     )

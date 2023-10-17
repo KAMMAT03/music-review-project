@@ -22,3 +22,14 @@
 .album-style-review p, .album-style-review button{
     color: whitesmoke;
 }
+
+.userreview-nav-title{
+    font-weight: 800;
+    font-size: 34px;
+    background-color: rgb(26, 26, 26);
+    color: whitesmoke;
+    padding: 6px 20px;
+    border-radius: 10px;
+    margin-right: auto;
+    margin-left: auto;
+}

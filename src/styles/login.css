@@ -3,7 +3,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 22vh;
+    margin-top: 16vh;
 }
 
 .login{
@@ -47,18 +47,24 @@
     cursor: pointer;
 }
 
-.login-button:hover, .login-toggle button:hover{
-    opacity: 0.8;
+.login-button:hover{
+    opacity: 0.9;
 }
 
-.login-button:active, .login-toggle button:active{
-    opacity: 0.6;
+.login-button:active{
+    opacity: 0.8S;
 }
 
 .login h1 {
     color: rgb(26, 26, 26);
-    margin-bottom: 20px;
     font-size: 40px;
+}
+
+.login-info{
+    font-size: 18px;
+    text-align: center;
+    font-weight: 500;
+    margin-bottom: 20px;
 }
 
 .login-toggle{
@@ -75,8 +81,31 @@
 .login-toggle button{
     border: none;
     padding: 5px;
-    background-color: rgb(26, 26, 26);
-    color: whitesmoke;
+    background-color: transparent;
+    font-weight: 700;
+    font-size: 16px;
+    color: rgb(26, 26, 26);
     border-radius: 8px;
     cursor: pointer;
+}
+
+.login-continue{
+    border: none;
+    background-color: transparent;
+    color: rgb(26, 26, 26);
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 10px;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+.login-continue:hover, .login-toggle button:hover{
+    background-color: rgb(26, 26, 26);
+    color: whitesmoke;
+}
+
+.login-continue:active, .login-toggle button:active{
+    opacity: 0.8;
 }
