@@ -2,6 +2,7 @@ import React from "react";
 import Album from "./Album";
 import '../styles/main.css'
 import { useNavigate } from "react-router-dom";
+import Nav from "./Nav";
 
 export default function Main(props){
     const [searchContent, setSearchContent] = React.useState("");
@@ -59,20 +60,7 @@ export default function Main(props){
 
     return (
         <main className="main">
-            <nav className="main-nav">
-                <div className="home-container">
-                    <img className="home-icon" src="home-icon.svg" alt="" />
-                </div>
-                <form className="main-form" action="">
-                    <input
-                        value={searchContent}
-                        onChange={handleChange}
-                        type="text"
-                        placeholder="Search an album"
-                    />
-                </form>
-                <button className="myreviews-button" >My Reviews</button>
-            </nav>
+            <Nav handleChange={handleChange} searchValue={searchContent} />
             {
                 albums.length === 0 &&
                 <div className="main-title">
