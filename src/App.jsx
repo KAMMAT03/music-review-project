@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css'
 import Login from './pages/Login'
 import AlbumPage from './pages/AlbumPage';
 import Main from './pages/Main';
@@ -8,11 +7,14 @@ import UserReviews from './pages/UserReviews';
 
 
 export default function App(){
-  const [token, setToken] = React.useState("");
+  // const [user, setUser] = React.useState({
+  //   username: "",
+  //   token: ""
+  // });
 
-  function saveToken(text){
-    setToken(text);
-  }
+  // function saveUser(user){
+  //   setUser(user);
+  // }
 
   return (
     <div className='container'>

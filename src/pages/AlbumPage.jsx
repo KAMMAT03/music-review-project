@@ -41,7 +41,7 @@ export default function AlbumPage(){
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": `Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0MTMiLCJpYXQiOjE2OTc0OTAwNzUsImV4cCI6MTY5NzQ5MzY3NX0.IqEKibwAxCBQ7w4kSToLP-iHSiECEGsJReIGyhpm2cd1T4Tb3wp4_RNw9gTZIEmgAnLFp6OQ15oJZ76_atFOnw`
+                "Authorization": `Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0MTMiLCJpYXQiOjE2OTc1NTQxMDEsImV4cCI6MTY5NzU1NzcwMX0.hN4Ml5tSluBSDy0bZKrgiH5glftdSlJIiw2I5dvNgPah9NKqX-As2YCWB3gpctUkunqfsK9_q6P7w9MNbAXwVQ`
             },
             body: JSON.stringify({
                 ...reviewObj,

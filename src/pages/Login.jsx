@@ -46,7 +46,7 @@ export default function Login(props){
         .then(json => {
             console.log(json);
             if (json.code === '200'){
-                navigate("/search");
+                navigate("/search", { state: {username: credentials.username, token: json.token} });
             } else {
                 setMessage(json.message);
                 setCredentials(prev => ({
@@ -73,7 +73,7 @@ export default function Login(props){
         }).then(response => response.json())
         .then(json => {
             if (json.accessToken !== undefined){
-                navigate("/search");
+                navigate("/search", { state: {username: credentials.username, token: json.accessToken} });
             } else{
                 setMessage("Wrong username or password!");
             }

@@ -1,7 +1,7 @@
 import React from "react";
 import Album from "./Album";
 import '../styles/main.css'
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Nav from "./Nav";
 
 export default function Main(props){
@@ -15,6 +15,10 @@ export default function Main(props){
     
     const [albums, setAlbums] = React.useState([]);
 
+    const location = useLocation();
+
+    console.log(location.state);
+
     function handleChange(event) {
         setSearchContent(event.target.value);
     }
@@ -24,7 +28,6 @@ export default function Main(props){
     }
 
     React.useEffect(() => {
-        console.log(albumId);
         albumId && navigate(`/album/${albumId}`);
     }, [albumId])
 
