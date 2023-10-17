@@ -14,7 +14,10 @@ export default function Nav(props){
                     placeholder="Search an album"
                 />
             </form>}
-            <button className="myreviews-button" >My Reviews</button>
+            <button
+                className="myreviews-button"
+                onClick={props.authorized ? props.goToUserReviews : props.goToLogin}
+            >{props.authorized ? "My Reviews" : "Sign in"}</button>
         </nav>
     )
 }

@@ -3,7 +3,7 @@ import '../styles/login.css'
 import { useNavigate } from 'react-router-dom';
 
 export default function Login(props){
-    const [registered, setRegistered] = React.useState(false);
+    const [registered, setRegistered] = React.useState(true);
 
     const [message, setMessage] = React.useState("");
 

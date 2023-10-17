@@ -17,8 +17,6 @@ export default function Main(props){
 
     const location = useLocation();
 
-    console.log(location.state);
-
     function handleChange(event) {
         setSearchContent(event.target.value);
     }
@@ -33,6 +31,14 @@ export default function Main(props){
 
     function goToAlbum(event){
         setAlbumId(event.target.name);
+    }
+
+    function goToLogin(){
+        navigate('/auth');
+    }
+
+    function goToUserReviews(){
+        navigate(`/reviews/${location.state.username}`);
     }
 
     React.useEffect(() => {
@@ -64,7 +70,14 @@ export default function Main(props){
 
     return (
         <main className="main">
-            <Nav handleChange={handleChange} searchValue={searchContent} main={true} />
+            <Nav
+                handleChange={handleChange}
+                searchValue={searchContent}
+                main={true}
+                authorized={location.state !== null}
+                goToLogin={goToLogin}
+                goToUserReviews={goToUserReviews}
+            />
             {
                 albums.length === 0 &&
                 <div className="main-title">

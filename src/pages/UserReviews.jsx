@@ -2,17 +2,19 @@ import React from "react";
 import Nav from "./Nav";
 import Review from "./Review";
 import '../styles/userreviews.css'
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 export default function UserReviews(props){
     const [reviews, setReviews] = React.useState([]);
+
+    const { username } = useParams();
 
     const navigate = useNavigate;
 
     const [albumId, setAlbumId] = React.useState("");
 
     React.useEffect(() => {
-        fetch(`http://localhost:8080/api/users/test13/reviews`)
+        fetch(`http://localhost:8080/api/users/${username}/reviews`)
         .then(response => response.json())
         .then(json => setReviews
             (json.content.sort((a, b) => 

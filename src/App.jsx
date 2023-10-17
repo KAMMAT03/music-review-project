@@ -7,14 +7,6 @@ import UserReviews from './pages/UserReviews';
 
 
 export default function App(){
-  // const [user, setUser] = React.useState({
-  //   username: "",
-  //   token: ""
-  // });
-
-  // function saveUser(user){
-  //   setUser(user);
-  // }
 
   return (
     <div className='container'>
@@ -22,7 +14,7 @@ export default function App(){
         <Route path="/auth" element={<Login />} />
         <Route path="/search" element={<Main />} />
         <Route path="/album/:id" element={<AlbumPage />} />
-        <Route path="/reviews" element={<UserReviews />} />
+        <Route path="/reviews/:username" element={<UserReviews />} />
       </Routes>
     </div>
   )
