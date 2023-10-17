@@ -52,7 +52,7 @@ export default function AlbumPage(){
 
     const reviewElements = !(reviews.length > 0) ? [] : reviews.map(reviewObj => {
         return (
-            <Review key={reviewObj.id} reviewProps={reviewObj} />
+            <Review key={reviewObj.id} reviewProps={reviewObj} goToAlbum={() => 0} detailed={false} />
         )
     })
 

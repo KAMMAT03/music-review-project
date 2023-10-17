@@ -16,9 +16,9 @@ export default function Album(props){
     ))
 
     return (
-        <div className="album" >
+        <div className={props.reviewView ? "album-style-review" : "album"} >
             <img
-                name={props?.albumId} onClick={event => props.func(event)}
+                name={props?.albumId} onClick={event => props.goToAlbum(event)}
                 className="album-cover"
                 src={props?.albumCover}
                 alt=""
@@ -26,7 +26,7 @@ export default function Album(props){
             <div className="album-info" >
                 <button
                     className="album-name"
-                    name={props?.albumId} onClick={event => props.func(event)}
+                    name={props?.albumId} onClick={event => props.goToAlbum(event)}
                  >{props?.albumName}</button>
                 <div className="album-artists" >
                     {artistElements}

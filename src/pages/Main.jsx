@@ -49,12 +49,13 @@ export default function Main(props){
 
     const albumElements = albums && albums.map(album => (
         <Album
-            func={goToAlbum}
+            goToAlbum={goToAlbum}
             key={album.id}
             albumName={album.name}
             albumArtists={album.artists}
             albumId={album.id}
             albumCover={album.imageUrl}
+            reviewView={false}
         />
     ))
 

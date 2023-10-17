@@ -5,3 +5,20 @@
     flex-direction: column;
     gap: 20px;
 }
+
+.album-style-review{
+    display: flex;
+    align-items: center;
+    background-color: rgb(26, 26, 26);
+    padding: 15px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+}
+
+.album-style-review img{
+    margin-right: 15px;
+}
+
+.album-style-review p, .album-style-review button{
+    color: whitesmoke;
+}
