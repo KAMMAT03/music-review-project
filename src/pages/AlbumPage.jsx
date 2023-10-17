@@ -1,9 +1,9 @@
 import React from "react";
-import Tracks from "./Tracks";
 import '../styles/albumpage.css';
 import Review from "./Review";
 import { useParams } from "react-router-dom";
 import CreateReview from "./CreateReview";
+import Sidebar from "./Sidebar";
 
 export default function AlbumPage(){
     const { id } = useParams();
@@ -50,19 +50,6 @@ export default function AlbumPage(){
         }).then((response) => console.log(response));
     }
 
-    const artistElements = !album.artists ? [] : album.artists.map((artist, index) => (
-        <p
-            style={{
-                    borderLeft: index ? 'solid' : 'none',
-                    borderWidth: '2px',
-                    paddingLeft: index ? '10px' : '0px',
-                    paddingRight: index === album.artists.length - 1 ? '0px' : '10px'}}
-            key={artist.id}
-            className="artist-element"
-            >{artist.name}
-        </p>
-    ))
-
     const reviewElements = !(reviews.length > 0) ? [] : reviews.map(reviewObj => {
         return (
             <Review key={reviewObj.id} reviewProps={reviewObj} />
@@ -71,22 +58,11 @@ export default function AlbumPage(){
 
     return (
         <div className="albumpage-main">
-            <div className="albumpage-info">
-                <img
-                    className="albumpage-cover"
-                    src={album?.imageUrl}
-                    alt=""
-                />
-                <h1 className="albumpage-name">{album?.name}</h1>
-                <div className="albumpage-artists">
-                    {artistElements}
-                </div>
-                <p className="albumpage-date">Released: {album.releaseDate}</p>
-                <p>Tracklist:</p>
-                <div className="albumpage-tracklist">
-                    <Tracks tracklist={album.trackList} />
-                </div>
-            </div>
+            <Sidebar
+                albumImg={album.imageUrl} albumName={album.name}
+                albumDate={album.releaseDate} albumTracks={album.trackList}
+                albumArtists={album.artists}
+            />
             {!createView ?  <div className="albumpage-reviews">
                 <button onClick={enableCreateView} className="albumpage-review-button">Add Review</button>
                 {reviewElements}
