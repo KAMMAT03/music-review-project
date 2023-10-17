@@ -60,7 +60,7 @@ export default function Main(props){
 
     return (
         <main className="main">
-            <Nav handleChange={handleChange} searchValue={searchContent} />
+            <Nav handleChange={handleChange} searchValue={searchContent} main={true} />
             {
                 albums.length === 0 &&
                 <div className="main-title">

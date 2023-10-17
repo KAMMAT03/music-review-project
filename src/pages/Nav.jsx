@@ -6,14 +6,14 @@ export default function Nav(props){
             <div className="home-container">
                 <img className="home-icon" src="home-icon.svg" alt="" />
             </div>
-            <form className="main-form" action="">
+            {props.main && <form className="main-form" action="">
                 <input
                     value={props.searchValue}
                     onChange={event => props.handleChange(event)}
                     type="text"
                     placeholder="Search an album"
                 />
-            </form>
+            </form>}
             <button className="myreviews-button" >My Reviews</button>
         </nav>
     )
