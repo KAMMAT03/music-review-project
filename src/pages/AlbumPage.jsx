@@ -44,7 +44,9 @@ export default function AlbumPage(){
         navigate('/auth');
     }
 
-    function addReview(reviewObj){
+    function addReview(event, reviewObj){
+        event.preventDefault();
+
         fetch("http://localhost:8080/api/reviews/create", {
             method: "POST",
             headers: {
@@ -56,6 +58,10 @@ export default function AlbumPage(){
                 albumId: id
             })
         }).then((response) => console.log(response));
+
+        setTimeout(() => {
+            window.location.reload();
+        }, 500)
     }
 
     const reviewElements = !(reviews.length > 0) ? [] : reviews.map(reviewObj => {
@@ -63,7 +69,7 @@ export default function AlbumPage(){
             <Review key={reviewObj.id} reviewProps={reviewObj} goToAlbum={() => 0} detailed={false} />
         )
     })
-
+    
     return (
         <div className="albumpage-main">
             <Sidebar

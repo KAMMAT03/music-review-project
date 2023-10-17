@@ -59,8 +59,8 @@ export default function CreateReview(props){
             </div>
             <div className="create-buttons">
                 <button onClick={props.funcView} className="create-cancel">Cancel</button>
-                <button onClick={() => {
-                    props.funcReview(reviewObj);
+                <button onClick={(event) => {
+                    props.funcReview(event, reviewObj);
 
                     setReviewObj({
                         title: "",
