@@ -195,6 +195,7 @@
 
 #score {
     -webkit-appearance: none;
+    appearance: none;
     width: 70%;
     height: 25px;
     background: rgb(255,42,42);

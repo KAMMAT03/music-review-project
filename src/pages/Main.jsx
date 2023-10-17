@@ -36,7 +36,10 @@ export default function Main(props){
       }, [searchContent, pageNo])
 
     React.useEffect(() => {
-        if (searchContent.length < 3) return;
+        if (searchContent.length < 3) {
+            setAlbums([]);
+            return;
+        }
 
         fetch(`http://localhost:8080/api/albums/search?content=${searchContent.replace(/\s/g,'')}&pageNo=${pageNo}`)
         .then(response => response.json())
