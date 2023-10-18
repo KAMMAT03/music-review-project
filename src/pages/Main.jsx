@@ -1,21 +1,23 @@
 import React from "react";
-import Album from "./Album";
-import '../styles/main.css'
 import { useLocation, useNavigate } from "react-router-dom";
+import Album from "./Album";
 import Nav from "./Nav";
+import '../styles/main.css'
 
 export default function Main(props){
     const [searchContent, setSearchContent] = React.useState("");
-
-    const navigate = useNavigate();
-
+    
     const [albumId, setAlbumId] = React.useState("");
-
+    
     const [pageNo, setPageNo] = React.useState(1);
     
     const [albums, setAlbums] = React.useState([]);
+    
+    const navigate = useNavigate();
 
     const location = useLocation();
+
+
 
     function handleChange(event) {
         setSearchContent(event.target.value);
@@ -25,14 +27,10 @@ export default function Main(props){
         event.target.name === 'back' ? setPageNo(prev => prev - 1) : setPageNo(prev => prev + 1);
     }
 
-    React.useEffect(() => {
-        albumId && navigate(`/album/${albumId}`, { state: location.state });
-    }, [albumId])
-
     function goToAlbum(event){
         setAlbumId(event.target.name);
     }
-
+    
     function goToLogin(){
         navigate('/auth');
     }
@@ -40,19 +38,25 @@ export default function Main(props){
     function logOut(){
         navigate('/search');
     }
-
+    
     function goToUserReviews(){
         navigate(`/reviews/${location.state.username}`, { state: location.state });
     }
-
+    
     function goToMain(){
         window.location.reload();
     }
 
+
+
+    React.useEffect(() => {
+        albumId && navigate(`/album/${albumId}`, { state: location.state });
+    }, [albumId])
+    
     React.useEffect(() => {
         window.scrollTo(0, 0)
-      }, [searchContent, pageNo])
-
+    }, [searchContent, albums])
+    
     React.useEffect(() => {
         if (searchContent.length < 3) {
             setAlbums([]);
@@ -63,6 +67,8 @@ export default function Main(props){
         .then(response => response.json())
         .then(json => setAlbums(json.content));
     }, [searchContent, pageNo])
+
+
 
     const albumElements = albums && albums.map(album => (
         <Album
@@ -75,6 +81,8 @@ export default function Main(props){
             reviewView={false}
         />
     ))
+
+
 
     return (
         <main className="main">

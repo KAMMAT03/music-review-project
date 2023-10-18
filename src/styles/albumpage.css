@@ -1,5 +1,6 @@
 .albumpage-main{
     margin-left: 350px;
+    margin-top: 100px;
     padding: 20px 50px;
 }
 
@@ -15,6 +16,7 @@
     flex-direction: column;
     padding: 30px;
     gap: 10px;
+    z-index: 1;
 }
 
 .albumpage-cover{
@@ -59,6 +61,7 @@
     align-items: center;
     color: whitesmoke;
     padding-block: 5px;
+    padding-right: 5px;
     border-radius: 10px;
     background-color: rgb(26, 26, 26);
 }
@@ -91,14 +94,24 @@
 .albumpage-review-button{
     align-self: center;
     font-size: 20px;
-    margin-bottom: 20px;
-    /* width: 150px; */
     padding: 10px 20px;
-    background-color: rgb(40, 223, 247);
+    margin-right: auto;
+    margin-left: 50vw;
+    background-color: transparent;
+    color: whitesmoke;
     border: none;
     border-radius: 15px;
     font-weight: 600;
     cursor: pointer;
+}
+
+.albumpage-review-button:hover{
+    background-color: rgb(40, 223, 247);
+    color: rgb(26, 26, 26);
+}
+
+.albumpage-review-button:active{
+    opacity: 0.8;
 }
 
 .review-user{
@@ -257,4 +270,28 @@
 
 .create-cancel{
     color: red;
+}
+
+.albumpage-nav{
+    display: flex;
+    background-color: rgb(26, 26, 26);
+    position: fixed;
+    right: 0;
+    top: 0;
+    left: 0;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 20px;
+}
+
+.albumpage-nav .home-icon{
+    filter: invert(100%) sepia(0%) saturate(185%) hue-rotate(82deg) brightness(114%) contrast(92%);
+}
+
+.albumpage-nav .home-container:hover{
+    background-color: rgb(40, 223, 247);
+}
+
+.albumpage-nav .home-container:hover .home-icon{
+    filter: invert(0%) sepia(10%) saturate(6064%) hue-rotate(70deg) brightness(102%) contrast(80%);
 }

@@ -90,7 +90,7 @@
     background-color: rgb(40, 223, 247);
     border-radius: 15px;
     margin-bottom: 20px;
-    max-width: 800px;
+    max-width: 90vw;
 }
 
 .album p {
@@ -135,8 +135,6 @@
 }
 
 .main-albums{
-    width: fit-content;
-    margin-inline: auto;
     padding-inline: 50px;
 }
 
@@ -176,6 +174,7 @@
     color: rgb(40, 223, 247);
     font-size: 30px;
     position: relative;
+    align-self: center;
 }
 
 .main-title h1, h2{
