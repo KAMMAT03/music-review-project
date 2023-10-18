@@ -1,6 +1,7 @@
 import React from "react";
 import Nav from "./Nav";
 import Review from "./Review";
+import CreateReview from "./CreateReview";
 import '../styles/userreviews.css'
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 
@@ -12,6 +13,15 @@ export default function UserReviews(props){
     const [pageNo, setPageNo] = React.useState(1);
 
     const [lastPage, setLastPage] = React.useState(false);
+
+    const [createView, setCreateView] = React.useState(false);
+
+    const [update, setUpdate] = React.useState(false);
+
+    const [updateData, setUpdateData] = React.useState({
+        reviewId: "0",
+        reviewObj: {} 
+    });
 
     const { username } = useParams();
 
@@ -62,12 +72,50 @@ export default function UserReviews(props){
         navigate('/auth');
     }
 
+    function enableCreateView(){
+        setCreateView(true);
+    }
+
+    function updateView(reviewId, reviewObj){
+        setCreateView(true);
+        setUpdate(true);
+        setUpdateData(prev => ({...prev, reviewId: reviewId, reviewObj: reviewObj}));
+    }
+
+    function disableCreateView(){
+        setCreateView(false);
+    }
+
     function parseJwt(token) {
         try {
           return JSON.parse(atob(token.split('.')[1]));
         } catch (e) {
           return null;
         }
+    }
+
+    function updateReview(event, reviewObj, reviewId, update){
+        event.preventDefault();
+
+        if (parseJwt(location.state.token).exp * 1000 <= Date.now()){
+            navigate('/auth', { state: {message: 'Your session expired'} });
+            return;
+        }
+
+        fetch(`http://localhost:8080/api/reviews/${reviewId}/update`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${location.state.token}`
+            },
+            body: JSON.stringify({
+                ...reviewObj
+            })
+        }).then((response) => console.log(response));
+
+        setTimeout(() => {
+            window.location.reload();
+        }, 300)
     }
 
 
@@ -78,7 +126,7 @@ export default function UserReviews(props){
                 key={reviewObj.id} reviewProps={reviewObj}
                 goToAlbum={goToAlbum} detailed={true}
                 username={location.state.username} token={location.state.token}
-                parseJwt={parseJwt}
+                parseJwt={parseJwt} updateView={updateView}
             />
         )
     })
@@ -95,14 +143,24 @@ export default function UserReviews(props){
                 goToUserReviews={goToUserReviews}
                 username={location.state.username}  
             />
-            {reviewElements}
-            {reviews.length > 0 && <div className="page-switches">
-                {pageNo > 1 && 
-                    <button onClick={changePage} name="back" className="page-back" >◄</button>}
-                {!(lastPage && pageNo === 1) && pageNo}
-                {!lastPage && 
-                    <button onClick={changePage} name="next" className="page-next" >►</button>}
-            </div>}
+            {createView ? 
+            <div className="createreview">
+                <CreateReview
+                    updateData={updateData} update={update}
+                    funcReview={updateReview} funcView={disableCreateView}
+                />
+            </div>
+            :
+            <>
+                {reviewElements}
+                {reviews.length > 0 && <div className="page-switches">
+                    {pageNo > 1 && 
+                        <button onClick={changePage} name="back" className="page-back" >◄</button>}
+                    {!(lastPage && pageNo === 1) && pageNo}
+                    {!lastPage && 
+                        <button onClick={changePage} name="next" className="page-next" >►</button>}
+                </div>}            
+            </>}
         </div>
     )
 }
