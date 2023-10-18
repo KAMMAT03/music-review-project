@@ -68,10 +68,22 @@ export default function AlbumPage(){
         navigate(`/search`, { state: location.state });
     }
 
+    function parseJwt(token) {
+        try {
+          return JSON.parse(atob(token.split('.')[1]));
+        } catch (e) {
+          return null;
+        }
+    }
+
 
 
     function addReview(event, reviewObj){
         event.preventDefault();
+
+        if (parseJwt(location.state.token) * 1000 <= Date.now()){
+            navigate('/auth', { state: {message: 'Your session expired'} });
+        }
 
         fetch("http://localhost:8080/api/reviews/create", {
             method: "POST",

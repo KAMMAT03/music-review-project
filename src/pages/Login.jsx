@@ -1,11 +1,13 @@
 import React from 'react'
 import '../styles/login.css'
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 export default function Login(props){
     const [registered, setRegistered] = React.useState(true);
 
-    const [message, setMessage] = React.useState("");
+    const location = useLocation();
+
+    const [message, setMessage] = React.useState(location.state.message);
 
     const navigate = useNavigate();
 
