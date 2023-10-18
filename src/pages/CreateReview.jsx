@@ -1,9 +1,9 @@
 import React from "react";
 
 export default function CreateReview(props){
-    const [currentScore, setCurrentScore] = React.useState(5);
+    const [currentScore, setCurrentScore] = React.useState(props.update ? props.updateData.reviewObj.score : 5);
 
-    const [reviewObj, setReviewObj] = React.useState({
+    const [reviewObj, setReviewObj] = React.useState(props.update ? props.updateData.reviewObj : {
         title: "",
         content: "",
         score: 5
@@ -60,14 +60,14 @@ export default function CreateReview(props){
             <div className="create-buttons">
                 <button onClick={props.funcView} className="create-cancel">Cancel</button>
                 <button onClick={(event) => {
-                    props.funcReview(event, reviewObj);
+                    props.funcReview(event, reviewObj, props.updateData.reviewId, props.update);
 
                     setReviewObj({
                         title: "",
                         content: "",
                         score: 5
                     })
-                }} className="create-button">Create</button>
+                }} className="create-button">{props.update ? 'Update' : 'Create'}</button>
             </div>
         </form>
     )

@@ -62,6 +62,14 @@ export default function UserReviews(props){
         navigate('/auth');
     }
 
+    function parseJwt(token) {
+        try {
+          return JSON.parse(atob(token.split('.')[1]));
+        } catch (e) {
+          return null;
+        }
+    }
+
 
 
     const reviewElements = !(reviews.length > 0) ? [] : reviews.map(reviewObj => {
@@ -70,6 +78,7 @@ export default function UserReviews(props){
                 key={reviewObj.id} reviewProps={reviewObj}
                 goToAlbum={goToAlbum} detailed={true}
                 username={location.state.username} token={location.state.token}
+                parseJwt={parseJwt}
             />
         )
     })

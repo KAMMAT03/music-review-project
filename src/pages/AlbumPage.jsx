@@ -9,7 +9,14 @@ import '../styles/albumpage.css';
 export default function AlbumPage(){
     const [createView, setCreateView] = React.useState(false);
 
+    const [update, setUpdate] = React.useState(false);
+
     const [lastPage, setLastPage] = React.useState(false);
+
+    const [updateData, setUpdateData] = React.useState({
+        reviewId: "0",
+        reviewObj: {} 
+    });
     
     const [reviews, setReviews] = React.useState([]);
     
@@ -56,6 +63,12 @@ export default function AlbumPage(){
         setCreateView(true);
     }
 
+    function updateView(reviewId, reviewObj){
+        setCreateView(true);
+        setUpdate(true);
+        setUpdateData(prev => ({...prev, reviewId: reviewId, reviewObj: reviewObj}));
+    }
+
     function disableCreateView(){
         setCreateView(false);
     }
@@ -76,7 +89,7 @@ export default function AlbumPage(){
         }
     }
 
-    function addReview(event, reviewObj){
+    function addReview(event, reviewObj, reviewId, update){
         event.preventDefault();
 
         if (parseJwt(location.state.token).exp * 1000 <= Date.now()){
@@ -84,8 +97,12 @@ export default function AlbumPage(){
             return;
         }
 
-        fetch("http://localhost:8080/api/reviews/create", {
-            method: "POST",
+        const url = update ? `http://localhost:8080/api/reviews/${reviewId}/update` : "http://localhost:8080/api/reviews/create";
+
+        const method = update ? "PUT" : "POST";
+
+        fetch(url, {
+            method: method,
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": `Bearer ${location.state.token}`
@@ -98,10 +115,8 @@ export default function AlbumPage(){
 
         setTimeout(() => {
             window.location.reload();
-        }, 5000)
+        }, 300)
     }
-
-
 
     const reviewElements = !(reviews.length > 0) ? [] : reviews.map(reviewObj => {
         return (
@@ -109,7 +124,7 @@ export default function AlbumPage(){
                 key={reviewObj.id} reviewProps={reviewObj}
                 goToAlbum={() => 0} detailed={false}
                 username={location.state?.username} token={location.state?.token}
-                parseJwt={parseJwt}
+                parseJwt={parseJwt} updateView={updateView}
             />
         )
     })
@@ -150,7 +165,10 @@ export default function AlbumPage(){
                 </div>}
             </div> : 
             <div className="createreview">
-                <CreateReview funcReview={addReview} funcView={disableCreateView} />
+                <CreateReview
+                    updateData={updateData} update={update}
+                    funcReview={addReview} funcView={disableCreateView}
+                />
             </div>
             }
         </div>

@@ -3,13 +3,15 @@ import Album from "./Album";
 import trash from "../assets/trash-icon.svg";
 import { useNavigate } from "react-router-dom";
 
-export default function Review({reviewProps, detailed, goToAlbum, username, token, parseJwt}){
+export default function Review({reviewProps, detailed, goToAlbum, username, token, parseJwt, updateView}){
     const navigate = useNavigate();
 
     const [displayDelete, setDisplayDelete] = React.useState(false);
 
+    const reviewObj = {title: reviewProps.title, content: reviewProps.content, score: reviewProps.score};
+
     function deleteReview(){
-        if (parseJwt(location.state.token).exp * 1000 <= Date.now()){
+        if (parseJwt(token).exp * 1000 <= Date.now()){
             navigate('/auth', { state: {message: 'Your session expired'} });
             return;
         }
@@ -71,7 +73,7 @@ export default function Review({reviewProps, detailed, goToAlbum, username, toke
                 </div>}
                 {username === reviewProps.username &&
                 <>
-                    <button className="review-edit">Edit</button>
+                    <button onClick={() => updateView(reviewProps.id, reviewObj)} className="review-edit">Edit</button>
                     <div onClick={enableDisplayDelete} className="review-trash-container">
                         <img src={trash} alt="" className="review-trash" />
                     </div>
