@@ -85,10 +85,10 @@ export default function UserReviews(props){
             {reviewElements}
             {reviews.length > 0 && <div className="page-switches">
                 {pageNo > 1 && 
-                    <button onClick={changePage} name="back" className="page-back" >⇦</button>}
+                    <button onClick={changePage} name="back" className="page-back" >◄</button>}
                 {!(lastPage && pageNo === 1) && pageNo}
                 {!lastPage && 
-                    <button onClick={changePage} name="next" className="page-next" >⇨</button>}
+                    <button onClick={changePage} name="next" className="page-next" >►</button>}
             </div>}
         </div>
     )

@@ -54,6 +54,10 @@ export default function Main(props){
     }, [albumId])
     
     React.useEffect(() => {
+        setPageNo(1);
+    }, [searchContent])
+
+    React.useEffect(() => {
         window.scrollTo(0, 0)
     }, [searchContent, albums])
     
@@ -108,10 +112,10 @@ export default function Main(props){
             </ul>
             {albums.length > 0 && <div className="page-switches">
                 {pageNo > 1 && 
-                    <button onClick={changePage} name="back" className="page-back" >⇦</button>}
+                    <button onClick={changePage} name="back" className="page-back" >◄</button>}
                 {pageNo}
                 {pageNo < 5 && 
-                    <button onClick={changePage} name="next" className="page-next" >⇨</button>}
+                    <button onClick={changePage} name="next" className="page-next" >►</button>}
             </div>}
         </main>
     )

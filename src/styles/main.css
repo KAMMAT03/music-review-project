@@ -139,24 +139,28 @@
 }
 
 .page-next, .page-back{
-    width: 50px;
-    height: 50px;
-    background-color: rgb(40, 223, 247);
+    width: 45px;
+    height: 45px;
+    background-color: transparent;
+    color: whitesmoke;
     border: none;
     border-radius: 20%;
-    color: whitesmoke;
     font-weight: 800;
-    font-size: 30px;
-    position: absolute;
+    font-size: 24px;
     cursor: pointer;
+    position: absolute;
 }
 
 .page-back{
-    right: 35px;
+    right: 30px;
+}
+.page-next{
+    left: 30px;
 }
 
-.page-next{
-    left: 35px;
+.page-next:hover, .page-back:hover{
+    background-color: rgb(40, 223, 247);
+    color: rgb(26, 26, 26);
 }
 
 .main{
@@ -169,11 +173,11 @@
 
 .page-switches{
     display: flex;
-    gap: 20px;
-    align-items: center;
-    color: rgb(40, 223, 247);
-    font-size: 30px;
+    gap: 15px;
     position: relative;
+    align-items: center;
+    color: whitesmoke;
+    font-size: 30px;
     align-self: center;
 }
 

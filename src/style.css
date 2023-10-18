@@ -3,6 +3,8 @@
   font-family: 'Onest', sans-serif;
   padding: 0;
   box-sizing: border-box;
+  transition: opacity, background-color, color, filter;
+  transition-duration: 0.2s;
 }
 
 body{
