@@ -5,7 +5,7 @@ export default function Tracks(props){
         const artistElements = getArtists(track);
         
         return (
-            <div className="track-grid">
+            <div key={track.name} className="track-grid">
                 <span className="track-index">{index + 1}</span>
                 <div className="track-info">
                     <h4>{track.name}</h4>

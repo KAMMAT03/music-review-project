@@ -76,13 +76,12 @@ export default function AlbumPage(){
         }
     }
 
-
-
     function addReview(event, reviewObj){
         event.preventDefault();
 
-        if (parseJwt(location.state.token) * 1000 <= Date.now()){
+        if (parseJwt(location.state.token).exp * 1000 <= Date.now()){
             navigate('/auth', { state: {message: 'Your session expired'} });
+            return;
         }
 
         fetch("http://localhost:8080/api/reviews/create", {
@@ -99,14 +98,19 @@ export default function AlbumPage(){
 
         setTimeout(() => {
             window.location.reload();
-        }, 500)
+        }, 5000)
     }
 
 
 
     const reviewElements = !(reviews.length > 0) ? [] : reviews.map(reviewObj => {
         return (
-            <Review key={reviewObj.id} reviewProps={reviewObj} goToAlbum={() => 0} detailed={false} />
+            <Review
+                key={reviewObj.id} reviewProps={reviewObj}
+                goToAlbum={() => 0} detailed={false}
+                username={location.state?.username} token={location.state?.token}
+                parseJwt={parseJwt}
+            />
         )
     })
 
@@ -119,7 +123,14 @@ export default function AlbumPage(){
                 albumDate={album.releaseDate} albumTracks={album.trackList}
                 albumArtists={album.artists}
             />
-            {!createView ?  <div className="albumpage-reviews">
+            {!createView ?  
+            <div className="albumpage-reviews">
+                {!reviews?.length && 
+                <>
+                    <h1 className="albumpage-noreviews">No reviews for this album yet</h1>
+                    <h2 className="albumpage-noreviews-h2">Add the first one!</h2>
+                </>
+                }
                 <div className="albumpage-nav">
                     <button onClick={location.state !== null ? enableCreateView : goToLogin} className="albumpage-review-button">
                         {location.state !== null ? "Add Review" : "Sign in to add your review"}
@@ -129,13 +140,14 @@ export default function AlbumPage(){
                     </div>
                 </div>
                 {reviewElements}
-                {reviews.length > 0 && <div className="page-switches">
+                {reviews.length > 0 && 
+                <div className="page-switches">
                 {pageNo > 1 && 
                     <button onClick={changePage} name="back" className="page-back" >◄</button>}
                 {!(lastPage && pageNo === 1) && pageNo}
                 {!lastPage && 
                     <button onClick={changePage} name="next" className="page-next" >►</button>}
-            </div>}
+                </div>}
             </div> : 
             <div className="createreview">
                 <CreateReview funcReview={addReview} funcView={disableCreateView} />

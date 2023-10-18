@@ -66,7 +66,11 @@ export default function UserReviews(props){
 
     const reviewElements = !(reviews.length > 0) ? [] : reviews.map(reviewObj => {
         return (
-            <Review key={reviewObj.id} reviewProps={reviewObj} goToAlbum={goToAlbum} detailed={true} />
+            <Review
+                key={reviewObj.id} reviewProps={reviewObj}
+                goToAlbum={goToAlbum} detailed={true}
+                username={location.state.username} token={location.state.token}
+            />
         )
     })
 

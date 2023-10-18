@@ -7,7 +7,7 @@ export default function Login(props){
 
     const location = useLocation();
 
-    const [message, setMessage] = React.useState(location.state.message);
+    const [message, setMessage] = React.useState(location.state?.message);
 
     const navigate = useNavigate();
 

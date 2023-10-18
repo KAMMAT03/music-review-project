@@ -96,7 +96,8 @@
     font-size: 20px;
     padding: 10px 20px;
     margin-right: auto;
-    margin-left: 50vw;
+    margin-left:calc((100vw - 350px) / 2 + 320px);
+    transform: translateX(-50%);
     background-color: transparent;
     color: whitesmoke;
     border: none;
@@ -144,6 +145,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 15px;
 }
 ::-webkit-scrollbar {
     width: 16px;
@@ -272,6 +274,10 @@
     color: red;
 }
 
+.createreview{
+    margin-top: -100px;
+}
+
 .albumpage-nav{
     display: flex;
     background-color: rgb(26, 26, 26);
@@ -294,4 +300,56 @@
 
 .albumpage-nav .home-container:hover .home-icon{
     filter: invert(0%) sepia(10%) saturate(6064%) hue-rotate(70deg) brightness(102%) contrast(80%);
+}
+
+.review-edit{
+    margin-left: auto;
+    border: none;
+    font-weight: 600;
+    border-radius: 6px;
+    background-color: transparent;
+    font-size: 20px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.review-edit:hover{
+    background-color: rgb(26, 26, 26);
+    color: whitesmoke;
+}
+
+.review-trash{
+    height: 25px;
+    filter: invert(0%) sepia(10%) saturate(6064%) hue-rotate(70deg) brightness(102%) contrast(80%);
+}
+
+.review-trash-container{
+    display: flex;
+    margin-right: 20px;
+    padding: 5px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.review-trash-container:hover .review-trash{
+    filter: invert(10%) sepia(85%) saturate(6130%) hue-rotate(359deg) brightness(117%) contrast(114%);
+}
+
+.review-trash-container:hover{
+    background-color: rgb(26, 26, 26);
+}
+
+.review-trash-container:active, .review-edit:active{
+    opacity: 0.8;
+}
+
+.albumpage-noreviews{
+    color: rgb(73, 73, 73);
+    font-size: 40px;
+    text-align: center;
+    margin-top: 20vh;
+}
+
+.albumpage-noreviews-h2{
+    font-size: 30px;
 }
