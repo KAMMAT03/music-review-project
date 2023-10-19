@@ -59,8 +59,16 @@ export default function AlbumPage(){
         event.target.name === 'back' ? setPageNo(prev => prev - 1) : setPageNo(prev => prev + 1);
     }
 
+    function checkTokenExp(){
+        if (parseJwt(location.state.token).exp * 1000 <= Date.now()){
+            navigate('/auth', { state: {message: 'Your session expired'} });
+            return true;
+        }
+        return false;
+    }
+
     function enableCreateView(){
-        setCreateView(true);
+        !checkTokenExp() && setCreateView(true);
     }
 
     function updateView(reviewId, reviewObj){
@@ -92,10 +100,7 @@ export default function AlbumPage(){
     function addReview(event, reviewObj, reviewId, update){
         event.preventDefault();
 
-        if (parseJwt(location.state.token).exp * 1000 <= Date.now()){
-            navigate('/auth', { state: {message: 'Your session expired'} });
-            return;
-        }
+        if (checkTokenExp()) return;
 
         const url = update ? `http://localhost:8080/api/reviews/${reviewId}/update` : "http://localhost:8080/api/reviews/create";
 

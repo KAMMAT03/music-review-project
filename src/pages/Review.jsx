@@ -11,10 +11,7 @@ export default function Review({reviewProps, detailed, goToAlbum, username, toke
     const reviewObj = {title: reviewProps.title, content: reviewProps.content, score: reviewProps.score};
 
     function deleteReview(){
-        if (parseJwt(token).exp * 1000 <= Date.now()){
-            navigate('/auth', { state: {message: 'Your session expired'} });
-            return;
-        }
+        if (checkTokenExp()) return;
 
         fetch(`http://localhost:8080/api/reviews/${reviewProps.id}/delete`, {
             method: "DELETE",
@@ -28,11 +25,19 @@ export default function Review({reviewProps, detailed, goToAlbum, username, toke
     }
 
     function enableDisplayDelete(){
-        setDisplayDelete(true);
+        !checkTokenExp() && setDisplayDelete(true);
     }
 
     function disableDisplayDelete(){
         setDisplayDelete(false);
+    }
+
+    function checkTokenExp(){
+        if (parseJwt(token).exp * 1000 <= Date.now()){
+            navigate('/auth', { state: {message: 'Your session expired'} });
+            return true;
+        }
+        return false;
     }
 
     function getColor(){
@@ -73,7 +78,9 @@ export default function Review({reviewProps, detailed, goToAlbum, username, toke
                 </div>}
                 {username === reviewProps.username &&
                 <>
-                    <button onClick={() => updateView(reviewProps.id, reviewObj)} className="review-edit">Edit</button>
+                    <button onClick={() => {
+                        !checkTokenExp() && updateView(reviewProps.id, reviewObj);
+                    }} className="review-edit">Edit</button>
                     <div onClick={enableDisplayDelete} className="review-trash-container">
                         <img src={trash} alt="" className="review-trash" />
                     </div>
