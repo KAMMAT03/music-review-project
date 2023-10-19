@@ -1,8 +1,10 @@
 import React from 'react'
-import '../styles/login.css'
 import { useLocation, useNavigate } from 'react-router-dom';
+import vinyl from '../assets/vinyl.svg';
+import headphones from '../assets/headphones.svg'
+import '../styles/login.css';
 
-export default function Login(props){
+export default function Login(){
     const [registered, setRegistered] = React.useState(true);
 
     const location = useLocation();
@@ -98,6 +100,9 @@ export default function Login(props){
 
     return (
         <div className='login-div'>
+            <img className='login-vinyl' src={vinyl} alt="" />
+            <img className='login-headphones' src={headphones} alt="" />
+            <h1 className='login-welcome'>Welcome to Music Review APP!</h1>
             <div className="login">
                 <h1>{registered ? 'Login' : 'Register'}</h1>
                 <p className='login-info' >For access to all functionalities!</p>

@@ -3,7 +3,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 16vh;
+    margin-top: 12vh;
+    gap: 50px;
 }
 
 .login{
@@ -108,4 +109,40 @@
 
 .login-continue:active, .login-toggle button:active{
     opacity: 0.8;
+}
+
+.login-welcome{
+    color: rgb(40, 223, 247);
+    font-size: 45px;
+}
+
+.login-vinyl{
+    width: 700px;
+    position: fixed;
+    z-index: -1;
+    left: -350px;
+    filter: invert(17%) sepia(14%) saturate(0%) hue-rotate(201deg) brightness(41%) contrast(68%);
+    top: 10vh;
+    animation-name: spin;
+    animation-duration: 8000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear; 
+}
+
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}
+
+.login-headphones{
+    height: 700px;
+    position: fixed;
+    z-index: -1;
+    right: -350px;
+    top: 10vh;
+    filter: invert(17%) sepia(14%) saturate(0%) hue-rotate(201deg) brightness(41%) contrast(68%);
 }

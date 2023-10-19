@@ -2,6 +2,8 @@ import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Album from "./Album";
 import Nav from "./Nav";
+import vinyl from '../assets/vinyl.svg';
+import headphones from '../assets/headphones.svg'
 import '../styles/main.css'
 
 export default function Main(props){
@@ -90,6 +92,8 @@ export default function Main(props){
 
     return (
         <main className="main">
+            <img className='main-vinyl' src={vinyl} alt="" />
+            <img className='main-headphones' src={headphones} alt="" />
             <Nav
                 handleChange={handleChange}
                 searchValue={searchContent}
