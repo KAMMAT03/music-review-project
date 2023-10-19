@@ -146,6 +146,11 @@ export default function UserReviews(props){
                 username={username}
                 logOut={logOut}  
             />
+            {!reviews?.length && 
+                <>
+                    <h1 className="albumpage-noreviews">{username} has no reviews</h1>
+                </>
+            }
             {createView ? 
             <div className="createreview">
                 <CreateReview
