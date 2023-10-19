@@ -60,20 +60,22 @@ export default function UserReviews(props){
         setAlbumId(event.target.name);
     }
 
+    function logOut(){
+        navigate(`/reviews/${username}`);
+        window.location.reload();
+    }
+
     function goToMain(){
         navigate(`/search`, { state: location.state });
     }
 
     function goToUserReviews(){
+        navigate(`/reviews/${location.state.username}`, { state: location.state})
         window.location.reload();
     }
 
     function goToLogin(){
         navigate('/auth');
-    }
-
-    function enableCreateView(){
-        setCreateView(true);
     }
 
     function updateView(reviewId, reviewObj){
@@ -125,7 +127,7 @@ export default function UserReviews(props){
             <Review
                 key={reviewObj.id} reviewProps={reviewObj}
                 goToAlbum={goToAlbum} detailed={true}
-                username={location.state.username} token={location.state.token}
+                username={location.state?.username} token={location.state?.token}
                 parseJwt={parseJwt} updateView={updateView}
             />
         )
@@ -141,7 +143,8 @@ export default function UserReviews(props){
                 authorized={location.state !== null}
                 goToLogin={goToLogin}
                 goToUserReviews={goToUserReviews}
-                username={location.state.username}  
+                username={username}
+                logOut={logOut}  
             />
             {createView ? 
             <div className="createreview">

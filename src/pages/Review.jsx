@@ -32,6 +32,10 @@ export default function Review({reviewProps, detailed, goToAlbum, username, toke
         setDisplayDelete(false);
     }
 
+    function goToUserReviews(){
+        navigate(`/reviews/${reviewProps.username}`, { state: {username: username, token: token} });
+    }
+
     function checkTokenExp(){
         if (parseJwt(token).exp * 1000 <= Date.now()){
             navigate('/auth', { state: {message: 'Your session expired'} });
@@ -66,7 +70,10 @@ export default function Review({reviewProps, detailed, goToAlbum, username, toke
             <div  className="review-header">
                 <div className="review-info">
                     <h1 className="review-title">{reviewProps.title}</h1>
-                    <h3 className="review-user">By: {reviewProps.username}</h3>
+                    <h3 className="review-user">
+                        By: 
+                        <span onClick={goToUserReviews}>{reviewProps.username}</span>
+                    </h3>
                 </div>
                 {displayDelete &&
                 <div className="delete-confirm">

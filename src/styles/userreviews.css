@@ -83,3 +83,13 @@
 .delete-cancel:active, .delete-button-confirm:active{
     opacity: 0.6;
 }
+
+.review-user > span{
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.review-user > span:hover{
+    text-decoration: underline;
+    font-weight: 800;
+}
