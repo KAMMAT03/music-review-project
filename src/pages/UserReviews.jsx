@@ -32,7 +32,7 @@ export default function UserReviews(props){
 
 
     React.useEffect(() => {
-        fetch(`http://localhost:8080/api/users/${username}/reviews?pageNo=${pageNo}`)
+        fetch(`http://musicreviewapp.eu-north-1.elasticbeanstalk.com/api/users/${username}/reviews?pageNo=${pageNo}`)
         .then(response => response.json())
         .then(json => {
             setReviews(json.content.sort((a, b) => 
@@ -104,7 +104,7 @@ export default function UserReviews(props){
             return;
         }
 
-        fetch(`http://localhost:8080/api/reviews/${reviewId}/update`, {
+        fetch(`http://musicreviewapp.eu-north-1.elasticbeanstalk.com/api/reviews/${reviewId}/update`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",

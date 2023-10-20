@@ -33,13 +33,13 @@ export default function AlbumPage(){
 
 
     React.useEffect(() => {
-        fetch(`http://localhost:8080/api/albums/${id}`)
+        fetch(`http://musicreviewapp.eu-north-1.elasticbeanstalk.com/api/albums/${id}`)
         .then(response => response.json())
         .then(json => setAlbum(json));
     }, [])
 
     React.useEffect(() => {
-        fetch(`http://localhost:8080/api/albums/${id}/reviews?pageNo=${pageNo}`)
+        fetch(`http://musicreviewapp.eu-north-1.elasticbeanstalk.com/api/albums/${id}/reviews?pageNo=${pageNo}`)
         .then(response => response.json())
         .then(json => {
             setReviews(json.content.sort((a, b) => 
@@ -102,7 +102,7 @@ export default function AlbumPage(){
 
         if (checkTokenExp()) return;
 
-        const url = update ? `http://localhost:8080/api/reviews/${reviewId}/update` : "http://localhost:8080/api/reviews/create";
+        const url = update ? `http://musicreviewapp.eu-north-1.elasticbeanstalk.com/api/reviews/${reviewId}/update` : "http://musicreviewapp.eu-north-1.elasticbeanstalk.com/api/reviews/create";
 
         const method = update ? "PUT" : "POST";
 

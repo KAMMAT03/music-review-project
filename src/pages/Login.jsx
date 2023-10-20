@@ -37,7 +37,7 @@ export default function Login(){
             return;
         }
 
-        fetch("http://localhost:8080/api/auth/register", {
+        fetch("http://musicreviewapp.eu-north-1.elasticbeanstalk.com/api/auth/register", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -65,7 +65,7 @@ export default function Login(){
     function submitLogin(event){
         event.preventDefault();
 
-        fetch("http://localhost:8080/api/auth/login", {
+        fetch("http://musicreviewapp.eu-north-1.elasticbeanstalk.com/api/auth/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

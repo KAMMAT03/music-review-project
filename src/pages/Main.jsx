@@ -69,7 +69,7 @@ export default function Main(props){
             return;
         }
 
-        fetch(`http://localhost:8080/api/albums/search?content=${searchContent.replace(/\s/g,'')}&pageNo=${pageNo}`)
+        fetch(`http://musicreviewapp.eu-north-1.elasticbeanstalk.com/api/albums/search?content=${searchContent.replace(/\s/g,'')}&pageNo=${pageNo}`)
         .then(response => response.json())
         .then(json => setAlbums(json.content));
     }, [searchContent, pageNo])

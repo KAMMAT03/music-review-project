@@ -13,7 +13,7 @@ export default function Review({reviewProps, detailed, goToAlbum, username, toke
     function deleteReview(){
         if (checkTokenExp()) return;
 
-        fetch(`http://localhost:8080/api/reviews/${reviewProps.id}/delete`, {
+        fetch(`http://musicreviewapp.eu-north-1.elasticbeanstalk.com/api/reviews/${reviewProps.id}/delete`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
