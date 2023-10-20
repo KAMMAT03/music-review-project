@@ -12,7 +12,7 @@ export default function App(){
     <div className='container'>
       <Routes>
         <Route path="/auth" element={<Login />} />
-        <Route path="*" element={<Main />} />
+        <Route exact path="/" element={<Main />} />
         <Route path="/album/:id" element={<AlbumPage />} />
         <Route path="/reviews/:username" element={<UserReviews />} />
       </Routes>
