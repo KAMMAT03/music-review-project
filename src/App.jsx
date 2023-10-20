@@ -2,7 +2,7 @@ import React from 'react';
 import Login from './pages/Login'
 import AlbumPage from './pages/AlbumPage';
 import Main from './pages/Main';
-import { Routes, Route, Redirect } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import UserReviews from './pages/UserReviews';
 
 
@@ -11,11 +11,8 @@ export default function App(){
   return (
     <div className='container'>
       <Routes>
-        <Route path='/'>
-          <Redirect to="/search" />    
-        </Route>
         <Route path="/auth" element={<Login />} />
-        <Route path="/search" element={<Main />} />
+        <Route path="*" element={<Main />} />
         <Route path="/album/:id" element={<AlbumPage />} />
         <Route path="/reviews/:username" element={<UserReviews />} />
       </Routes>
