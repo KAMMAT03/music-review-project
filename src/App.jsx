@@ -4,6 +4,7 @@ import AlbumPage from './pages/AlbumPage';
 import Main from './pages/Main';
 import { Routes, Route } from 'react-router-dom';
 import UserReviews from './pages/UserReviews';
+import NotFound from './pages/Redirect';
 
 
 export default function App(){
@@ -12,7 +13,8 @@ export default function App(){
     <div className='container'>
       <Routes>
         <Route path="/auth" element={<Login />} />
-        <Route exact path="/" element={<Main />} />
+        <Route path="*" element={<NotFound />} />
+        <Route path="/search" element={<Main />} />
         <Route path="/album/:id" element={<AlbumPage />} />
         <Route path="/reviews/:username" element={<UserReviews />} />
       </Routes>
