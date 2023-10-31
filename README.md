@@ -1,6 +1,9 @@
 # Music Review APP
 This is the frontend repository for [Music Review APP](http://musicreviewapp.surge.sh).
 
+## What did I learn?
+When I started building the backend for this app I knew nothing about frontend development, Javascript or even HTML & CSS. I initially planned on doing the frontend in JavaFX, but that would limit the availability of my app. That's when I decided to learn everything I needed to know about Javascript, HTML & CSS, as well as React in order to build a site that I have already envisioned inside my head. So basically, this project taught almost everything I know about frontend development ;)
+
 ## Technologies used:
 - Javascript
 - HTML & CSS
