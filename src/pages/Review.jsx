@@ -3,7 +3,7 @@ import Album from "./Album";
 import trash from "../assets/trash-icon.svg";
 import { useNavigate } from "react-router-dom";
 
-export default function Review({reviewProps, detailed, goToAlbum, username, token, parseJwt, updateView}){
+export default function Review({reviewProps, detailed, goToAlbum, username, token, parseJwt, updateView, viewSidebar}){
     const navigate = useNavigate();
 
     const [displayDelete, setDisplayDelete] = React.useState(false);
@@ -61,7 +61,7 @@ export default function Review({reviewProps, detailed, goToAlbum, username, toke
     }
 
     return (
-        <div className="review">
+        <div className="review" style={{filter: viewSidebar && "blur(3px)"}}>
             {detailed && <Album
                 goToAlbum={goToAlbum}
                 key={reviewProps.albumId}

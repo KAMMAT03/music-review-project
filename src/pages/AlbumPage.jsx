@@ -12,7 +12,7 @@ export default function AlbumPage(){
 
     const [update, setUpdate] = React.useState(false);
 
-    const [viewSidebar, setViewSidebar] = React.useState(window.innerWidth >= 550);
+    const [viewSidebar, setViewSidebar] = React.useState(window.innerWidth >= 1000);
 
     const [lastPage, setLastPage] = React.useState(false);
 
@@ -33,12 +33,27 @@ export default function AlbumPage(){
 
     const navigate = useNavigate();
 
+    const [windowWidth, setWindowWidth] = React.useState(window.innerWidth);
+
 
 
     React.useEffect(() => {
         fetch(`http://musicreviewapp.eu-north-1.elasticbeanstalk.com/api/albums/${id}`)
         .then(response => response.json())
         .then(json => setAlbum(json));
+    }, [])
+
+    React.useEffect(() => {
+        function handleResize(){
+            setWindowWidth(window.innerWidth);
+            window.innerWidth >= 1000 && setViewSidebar(true);
+            window.innerWidth < 1000 && window.innerWidth > 990 && setViewSidebar(false);
+        }
+
+        window.addEventListener('resize', handleResize);
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        }
     }, [])
 
     React.useEffect(() => {
@@ -137,6 +152,7 @@ export default function AlbumPage(){
                 goToAlbum={() => 0} detailed={false}
                 username={location.state?.username} token={location.state?.token}
                 parseJwt={parseJwt} updateView={updateView}
+                viewSidebar={viewSidebar && window.innerWidth < 1000}
             />
         )
     })
@@ -148,8 +164,19 @@ export default function AlbumPage(){
             {viewSidebar && <Sidebar
                 albumImg={album.imageUrl} albumName={album.name}
                 albumDate={album.releaseDate} albumTracks={album.trackList}
-                albumArtists={album.artists}
+                albumArtists={album.artists} key={windowWidth}
             />}
+            <div className="albumpage-nav">
+                {windowWidth <= 1000 &&
+                <img key={windowWidth} className="tribar" src={menu} alt="" onClick={toggleViewSidebar} />
+                }
+                <button onClick={location.state !== null ? enableCreateView : goToLogin} className="albumpage-review-button">
+                    {location.state !== null ? "Add Review" : "Sign in to add your review"}
+                </button>
+                <div onClick={goToMain} className="home-container">
+                    <img className="home-icon" src={icon} alt="" />
+                </div>
+            </div>
             {!createView ?  
             <div className="albumpage-reviews">
                 {!reviews?.length && 
@@ -158,17 +185,6 @@ export default function AlbumPage(){
                     <h2 className="albumpage-noreviews-h2">Add the first one!</h2>
                 </>
                 }
-                <div className="albumpage-nav">
-                    {window.innerWidth <= 1000 &&
-                    <img className="tribar" src={menu} alt="" onClick={toggleViewSidebar} />
-                    }
-                    <button onClick={location.state !== null ? enableCreateView : goToLogin} className="albumpage-review-button">
-                        {location.state !== null ? "Add Review" : "Sign in to add your review"}
-                    </button>
-                    <div onClick={goToMain} className="home-container">
-                        <img className="home-icon" src={icon} alt="" />
-                    </div>
-                </div>
                 {reviewElements}
                 {reviews.length > 0 && 
                 <div className="page-switches">

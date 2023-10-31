@@ -94,10 +94,56 @@
     font-weight: 800;
 }
 
-@media (width <= 550px){
+@media (width <= 1000px){
+    .delete-confirm{
+        padding: 30px 45px;
+        font-size: 25px;
+        gap: 15px;
+    }
+
+    .delete-confirm-buttons button{
+        font-size: 20px;
+    }
+
     .userreviews{
-        padding-inline: 0;
+        padding-inline: 50px;
         gap: 0;
+    }
+
+    .userreview-nav-title{
+        font-size: 22px;
+        text-align: center;
+        flex-shrink: 1;
+    }
+
+    .myreviews-button{
+        font-size: 18px;
+        padding-inline: 5px;
+    }
+
+    .main-nav{
+        padding-inline: 10px;
+    }
+
+    .userreviews{
+        margin-top: 100px;
+    }
+}
+
+@media (width <= 550px){
+    .delete-confirm{
+        padding: 20px 30px;
+        font-size: 20px;
+        gap: 15px;
+    }
+
+    .delete-confirm-buttons button{
+        font-size: 16px;
+    }
+
+    .userreviews{
+        padding-inline: 20px;
+        margin-top: 90px;
     }
 
     .userreview-nav-title{
@@ -111,7 +157,15 @@
         padding-inline: 5px;
     }
 
-    .main-nav{
-        padding-inline: 10px;
+    .userreviews .album-name{
+        font-size: 20px;
+    }
+
+    .userreviews .album-cover{
+        width: 55px;
+    }
+
+    .userreviews .album-style-review{
+        padding: 10px;
     }
 }

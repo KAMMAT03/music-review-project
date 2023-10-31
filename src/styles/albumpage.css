@@ -11,7 +11,7 @@
     top: 0;
     bottom: 0;
     left: 0;
-    width: 350px;
+    max-width: 350px;
     display: flex;
     flex-direction: column;
     padding: 30px;
@@ -64,6 +64,11 @@
     padding-right: 5px;
     border-radius: 10px;
     background-color: rgb(26, 26, 26);
+}
+
+.track-info{
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .track-index{
@@ -131,14 +136,15 @@
 .review-score{
     background-color: rgb(26, 26, 26);
     color: whitesmoke;
-    height: 60px;
-    width: 60px;
     display: flex;
     border-radius: 10px;
     flex-direction: column;
     text-align: center;
     justify-content: center;
     font-size: 40px;
+    height: 60px;
+    width: 60px;
+    flex-shrink: 0;
 }
 
 .review-header{
@@ -306,12 +312,14 @@
 .review-edit{
     margin-left: auto;
     border: none;
+    text-align: center;
     font-weight: 600;
     border-radius: 6px;
     background-color: transparent;
     font-size: 20px;
     padding: 5px 10px;
     cursor: pointer;
+    flex-shrink: 1;
 }
 
 .review-edit:hover{
@@ -330,6 +338,7 @@
     padding: 5px;
     border-radius: 6px;
     cursor: pointer;
+    flex-shrink: 1;
 }
 
 .review-trash-container:hover .review-trash{
@@ -360,10 +369,27 @@
     width: 40px;
 }
 
-@media (width <= 550px){
+@media (width <= 1000px){
     .albumpage-info{
-        top: 100px;
+        top: 93px;
         border-top-right-radius: 15px;
+        animation: fadein 0.15s;
+        max-width: 310px;
+    }
+
+
+    .albumpage-cover{
+        width: 250px;
+        height: 250px;
+    }
+
+    .tracks{
+        max-width: 250px;
+    }
+
+    @keyframes fadein {
+        from {left: -440px}
+        to {left: 0px}
     }
 
     .tribar{
@@ -384,15 +410,6 @@
 
     .albumpage-main{
         margin-left: 0;
-        padding-inline: 0;
-    }
-
-    .albumpage-reviews{
-        gap: 0;
-    }
-
-    .review{
-        transform: scale(0.8);
     }
 
     .albumpage-nav .home-icon{
@@ -400,42 +417,78 @@
     }
 }
 
-@media (width <= 1000px){
-    .albumpage-info{
-        top: 100px;
-        border-top-right-radius: 15px;
+@media (width <= 750px){
+    .review-score{
+        width: 50px;
+        height: 50px;
+        font-size: 35px;
     }
 
-    .tribar{
-        transform: scale(0.8);
-    }
-
-    .albumpage-nav{
-        padding-inline: 10px;
-        justify-content: space-between;
-    }
-
-    .albumpage-review-button{
-        margin-left: auto;
-        transform: translateX(0);
-        transform: scale(0.8);
-        padding-inline: 4px;
-    }
-
-    .albumpage-main{
-        margin-left: 0;
-        padding-inline: 0;
-    }
-
-    .albumpage-reviews{
-        gap: 0;
+    .review-title{
+        font-size: 30px;
     }
 
     .review{
-        transform: scale(0.8);
+        padding: 25px;
+    }
+    .review-trash-container{
+        margin-right: 0px;
     }
 
-    .albumpage-nav .home-icon{
-        transform: scale(0.8);
+    .review-edit{
+        padding-inline: 10px;
+    }
+
+    .review-header{
+        gap: 15px;
+    }
+}
+
+@media (width <= 550px){
+    .albumpage-cover{
+        width: 200px;
+        height: 200px;
+    }
+
+    .albumpage-info{
+        padding: 20px;
+        max-width: 240px;
+    }
+
+    .albumpage-name{
+        font-size: 20px;
+    }
+
+    .albumpage-artists{
+        font-size: 18px;
+    }
+
+    .tracks{
+        max-width: 200px;
+    }
+
+    .review-score{
+        width: 40px;
+        height: 40px;
+        font-size: 30px;
+    }
+
+    .review-title{
+        font-size: 25px;
+    }
+
+    .review{
+        padding: 20px;
+    }
+    .review-trash-container{
+        margin-right: 0px;
+    }
+
+    .review-edit{
+        padding-inline: 0px;
+    }
+
+    .review-header{
+        gap: 10px;
     }
 }

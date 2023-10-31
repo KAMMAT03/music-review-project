@@ -64,7 +64,6 @@
 
 .myreviews-button{
     font-size: 24px;
-    text-wrap: nowrap;
     border: none;
     width: fit-content;
     border-radius: 9px;
@@ -227,6 +226,34 @@
     right: -300px;
     top: 18vh;
     filter: invert(17%) sepia(14%) saturate(0%) hue-rotate(201deg) brightness(41%) contrast(68%);
+}
+
+@media (width <= 1000px){
+    .main-vinyl{
+        scale: 0.8;
+    }
+
+    .main-headphones{
+        transform: scale(0.8);
+    }
+
+    .main-title{
+        top: 20%;
+    }
+}
+
+@media (width <= 750px){
+    .main-vinyl{
+        scale: 0.65;
+    }
+
+    .main-headphones{
+        transform: scale(0.65);
+    }
+
+    .main-title{
+        top: 20%;
+    }
 }
 
 @media (width <= 550px){
