@@ -33,7 +33,11 @@ export default function Review({reviewProps, detailed, goToAlbum, username, toke
     }
 
     function goToUserReviews(){
-        navigate(`/reviews/${reviewProps.username}`, { state: {username: username, token: token} });
+        if (username === undefined){
+            navigate(`/reviews/${reviewProps.username}`);    
+        } else {
+            navigate(`/reviews/${reviewProps.username}`, { state: {username: username, token: token} });
+        }
     }
 
     function checkTokenExp(){

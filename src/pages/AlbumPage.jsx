@@ -4,12 +4,15 @@ import CreateReview from "./CreateReview";
 import Sidebar from "./Sidebar";
 import Review from "./Review";
 import icon from "../assets/home-icon.svg";
+import menu from "../assets/menu.svg";
 import '../styles/albumpage.css';
 
 export default function AlbumPage(){
     const [createView, setCreateView] = React.useState(false);
 
     const [update, setUpdate] = React.useState(false);
+
+    const [viewSidebar, setViewSidebar] = React.useState(window.innerWidth >= 550);
 
     const [lastPage, setLastPage] = React.useState(false);
 
@@ -57,6 +60,10 @@ export default function AlbumPage(){
 
     function changePage(event){
         event.target.name === 'back' ? setPageNo(prev => prev - 1) : setPageNo(prev => prev + 1);
+    }
+
+    function toggleViewSidebar(){
+        setViewSidebar(prev => !prev);
     }
 
     function checkTokenExp(){
@@ -138,11 +145,11 @@ export default function AlbumPage(){
     
     return (
         <div className="albumpage-main">
-            <Sidebar
+            {viewSidebar && <Sidebar
                 albumImg={album.imageUrl} albumName={album.name}
                 albumDate={album.releaseDate} albumTracks={album.trackList}
                 albumArtists={album.artists}
-            />
+            />}
             {!createView ?  
             <div className="albumpage-reviews">
                 {!reviews?.length && 
@@ -152,6 +159,9 @@ export default function AlbumPage(){
                 </>
                 }
                 <div className="albumpage-nav">
+                    {window.innerWidth <= 1000 &&
+                    <img className="tribar" src={menu} alt="" onClick={toggleViewSidebar} />
+                    }
                     <button onClick={location.state !== null ? enableCreateView : goToLogin} className="albumpage-review-button">
                         {location.state !== null ? "Add Review" : "Sign in to add your review"}
                     </button>

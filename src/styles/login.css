@@ -4,7 +4,7 @@
     align-items: center;
     justify-content: center;
     margin-top: 12vh;
-    gap: 50px;
+    gap: 5vh;
 }
 
 .login{
@@ -114,6 +114,7 @@
 .login-welcome{
     color: rgb(40, 223, 247);
     font-size: 45px;
+    text-align: center;
 }
 
 .login-vinyl{
@@ -145,4 +146,22 @@
     right: -350px;
     top: 10vh;
     filter: invert(17%) sepia(14%) saturate(0%) hue-rotate(201deg) brightness(41%) contrast(68%);
+}
+
+@media (width <= 550px){
+    .login, .login-welcome{
+        transform: scale(0.8);
+    }
+
+    .login-div{
+        margin-top: 5vh;
+    }
+
+    .login-vinyl{
+        scale: 0.5;
+    }
+
+    .login-headphones{
+        transform: scale(0.5);
+    }
 }

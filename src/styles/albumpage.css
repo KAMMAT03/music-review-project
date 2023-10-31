@@ -16,7 +16,7 @@
     flex-direction: column;
     padding: 30px;
     gap: 10px;
-    z-index: 1;
+    z-index: 11;
 }
 
 .albumpage-cover{
@@ -288,6 +288,7 @@
     align-items: center;
     justify-content: flex-end;
     padding: 20px;
+    z-index: 10;
 }
 
 .albumpage-nav .home-icon{
@@ -352,4 +353,89 @@
 
 .albumpage-noreviews-h2{
     font-size: 30px;
+}
+
+.tribar{
+    filter: invert(100%) sepia(0%) saturate(185%) hue-rotate(82deg) brightness(114%) contrast(92%);
+    width: 40px;
+}
+
+@media (width <= 550px){
+    .albumpage-info{
+        top: 100px;
+        border-top-right-radius: 15px;
+    }
+
+    .tribar{
+        transform: scale(0.8);
+    }
+
+    .albumpage-nav{
+        padding-inline: 10px;
+        justify-content: space-between;
+    }
+
+    .albumpage-review-button{
+        margin-left: auto;
+        transform: translateX(0);
+        transform: scale(0.8);
+        padding-inline: 4px;
+    }
+
+    .albumpage-main{
+        margin-left: 0;
+        padding-inline: 0;
+    }
+
+    .albumpage-reviews{
+        gap: 0;
+    }
+
+    .review{
+        transform: scale(0.8);
+    }
+
+    .albumpage-nav .home-icon{
+        transform: scale(0.8);
+    }
+}
+
+@media (width <= 1000px){
+    .albumpage-info{
+        top: 100px;
+        border-top-right-radius: 15px;
+    }
+
+    .tribar{
+        transform: scale(0.8);
+    }
+
+    .albumpage-nav{
+        padding-inline: 10px;
+        justify-content: space-between;
+    }
+
+    .albumpage-review-button{
+        margin-left: auto;
+        transform: translateX(0);
+        transform: scale(0.8);
+        padding-inline: 4px;
+    }
+
+    .albumpage-main{
+        margin-left: 0;
+        padding-inline: 0;
+    }
+
+    .albumpage-reviews{
+        gap: 0;
+    }
+
+    .review{
+        transform: scale(0.8);
+    }
+
+    .albumpage-nav .home-icon{
+        transform: scale(0.8);
+    }
 }

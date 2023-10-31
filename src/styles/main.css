@@ -8,6 +8,7 @@
     top: 0;
     align-items: center;
     justify-content: space-between;
+    gap: 10px;
     padding: 30px;
 }
 
@@ -68,6 +69,7 @@
     width: fit-content;
     border-radius: 9px;
     padding: 12px 20px;
+    flex-shrink: 1;
     cursor: pointer;
     background-color: transparent;
     font-weight: 700;
@@ -90,7 +92,7 @@
     background-color: rgb(40, 223, 247);
     border-radius: 15px;
     margin-bottom: 20px;
-    max-width: 90vw;
+    width: 60vw;
 }
 
 .album p {
@@ -225,4 +227,36 @@
     right: -300px;
     top: 18vh;
     filter: invert(17%) sepia(14%) saturate(0%) hue-rotate(201deg) brightness(41%) contrast(68%);
+}
+
+@media (width <= 550px){
+    .main-vinyl{
+        scale: 0.5;
+    }
+
+    .main-headphones{
+        transform: scale(0.5);
+    }
+
+    .main-title{
+        top: 22%;
+    }
+
+    .album{
+        transform: scale(0.8);
+        margin-bottom: 0;
+        width: 100vw;
+    }
+
+    .main-albums{
+        padding-inline: 0;
+    }
+
+    .main-nav{
+        padding: 20px;
+    }
+
+    .main{
+        margin-top: 90px;
+    }
 }
