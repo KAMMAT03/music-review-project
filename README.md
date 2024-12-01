@@ -11,7 +11,7 @@ When I started building the backend for this app I knew nothing about frontend d
 - Vite
 
 ## Hosting
-The website is hosted on [Surge](surge.sh).
+The website is hosted on [Azure](https://musicreviewapp.azurewebsites.net/).
 
 # Pages
 ## Login/Register
